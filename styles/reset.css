@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background: none;
+  outline: none;
+}
+
+ul li,
+ol li {
+  list-style-type: none;
+}

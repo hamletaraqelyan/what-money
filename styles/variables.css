@@ -1,0 +1,85 @@
+:root {
+  --header-height: 80px;
+  --font-manrope: "Manrope", sans-serif;
+
+  /* spacings */
+  --spacing-160: 160px;
+  --spacing-116: 116px;
+  --spacing-88: 88px;
+  --spacing-86: 86px;
+  --spacing-80: 80px;
+  --spacing-78: 78px;
+  --spacing-74: 74px;
+  --spacing-70: 70px;
+  --spacing-64: 64px;
+  --spacing-60: 60px;
+  --spacing-57: 57px;
+  --spacing-56: 56px;
+  --spacing-50: 50px;
+  --spacing-48: 48px;
+  --spacing-40: 40px;
+  --spacing-34: 34px;
+  --spacing-32: 32px;
+  --spacing-30: 30px;
+  --spacing-27: 27px;
+  --spacing-25: 25px;
+  --spacing-24: 24px;
+  --spacing-22: 22px;
+  --spacing-20: 20px;
+  --spacing-15: 15px;
+  --spacing-13: 13px;
+  --spacing-12: 12px;
+  --spacing-10: 10px;
+  --spacing-7: 7px;
+  --spacing-5: 5px;
+
+  /* font-sizes */
+  --font-size-116: 116px;
+  --font-size-114: 114px;
+  --font-size-96: 96px;
+  --font-size-82: 82px;
+  --font-size-80: 80px;
+  --font-size-62: 62px;
+  --font-size-52: 52px;
+  --font-size-40: 40px;
+  --font-size-36: 36px;
+  --font-size-30: 30px;
+  --font-size-26: 26px;
+  --font-size-24: 24px;
+  --font-size-22: 22px;
+  --font-size-20: 20px;
+  --font-size-18: 18px;
+  --font-size-16: 16px;
+  --font-size-14: 14px;
+  --font-size-12: 12px;
+
+  /* colors */
+  --text-title-black: #090909;
+  --design-text-black: #141415;
+  --text-title-blue: #1883ff;
+  --text-body: #475467;
+  --text-caption: #8695ac;
+  --text-gray: #9d9d9d;
+  --text-white: #fff;
+  --text-transparent: rgba(255, 255, 255, 0.7);
+
+  /* bg-colors */
+  --bg-white: #fff;
+  --bg-blue: #1883ff;
+  --bg-light-blue: #eaf4ff;
+  --bg-dark-gray: #252832;
+  --bg-footer: #f8f9f9;
+  --bg-seperator: #e4e7ec;
+  --button-gradient-background: linear-gradient(
+    180deg,
+    #1890ff 0%,
+    #145aff 100%
+  );
+  --bg-range-input: rgba(24, 131, 255, 0.2);
+
+  /* border-radius */
+  --block-border-radius: 32px;
+  --block-border-radius-small: 20px;
+  --block-border-radius-xs: 18px;
+  --block-border-radius-xxs: 15px;
+}

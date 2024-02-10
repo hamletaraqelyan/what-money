@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/variables.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+
+    <link rel="stylesheet" href="../styles//components/header.css" />
+    <link rel="stylesheet" href="../styles/components/buttons.css" />
+    <link rel="stylesheet" href="../styles/components/footer.css" />
+
+    <link rel="stylesheet" href="../styles/style.css" />
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <img
+        src="../public/media/icons/whatmoney-logo.svg"
+        alt="Header WhatMoney logo"
+      />
+      <div class="flex align-center">
+        <div class="lang-selector">
+          <div class="selected">
+            RU
+            <img
+              src="../public/media/icons/arrow-down.svg"
+              alt="arrow down icon"
+            />
+          </div>
+          <ul class="list">
+            <li>
+              <a href="../index.html">EN</a>
+            </li>
+            <li>
+              <a href="../ru/index.html">RU</a>
+            </li>
+          </ul>
+        </div>
+        <button class="button bordered">Get Early Access</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="mb-70 currency-rate">
+        <div class="range-block">
+          <p class="subheader">Currency Rate</p>
+          <h4 class="header">
+            Navigating Exchange Horizons. Your Guide to
+            <span class="text-blue">RUB to USD</span> Currency Dynamics
+          </h4>
+          <div class="range-input">
+            <p class="label">Amount in</p>
+            <h3 class="big-amount">₽ 5,000,000</h3>
+
+            <div class="canvas-range">
+              <div class="canvas-rangeLine">
+                <span
+                  class="canvas-rangeBtn"
+                  style="left: 0%"
+                  id="canvas-rangeBtn"
+                ></span>
+              </div>
+              <input type="range" min="0" max="100" value="0" id="slider" />
+              <span></span>
+              <span class="dark">
+                <span class="dark-overlay"></span>
+              </span>
+            </div>
+
+            <hr />
+            <p class="label">Amount out</p>
+            <h4 class="small-amount">$ 55,900</h4>
+          </div>
+          <p class="text-notice">
+            Take advantage of our advanced visual analytical tools to monitor
+            and forecast currency market trends.
+          </p>
+        </div>
+        <div class="chart-block bg-blue">
+          <p class="subheader">Currency Rate</p>
+          <h4 class="header">
+            Ruble to Dollar Journey: Charting the Exchange Landscape
+          </h4>
+          <div class="graph-block">
+            <div class="curr-rate">
+              <h5>1 RUB = 0.1178 USD</h5>
+              <p>Feb 2, 2024, 13:51 UTC</p>
+            </div>
+            <canvas id="myChart"></canvas>
+          </div>
+          <p class="text-notice">
+            Feel the confidence in our tools and the freedom to use them.
+          </p>
+        </div>
+      </section>
+
+      <section class="animated-cards mb-70">
+        <div class="header">
+          <h2>Make your money <br />work smarter for you</h2>
+          <button></button>
+        </div>
+        <div class="cards-wrapper">
+          <div class="card-item">
+            <p>Safe deposits that earn you real money</p>
+          </div>
+          <div class="card-item">
+            <p>An actual customer support that cares</p>
+          </div>
+          <div class="card-item">
+            <p>Instant crypto exchange</p>
+          </div>
+          <div class="card-item">
+            <p>And that's about all you need...</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="gsap-container mb-70">
+        <div class="gsap-image robo">
+          <div class="text-box-robo">
+            <h3>
+              From manual processing <br />to the
+              <span class="text-blue">digital</span> revolution
+            </h3>
+          </div>
+        </div>
+        <div class="gsap-image human">
+          <div class="text-box">
+            <p>
+              Experience the future of finance with secure and informed currency
+              transactions right in the palm of your hand.
+            </p>
+          </div>
+        </div>
+        <div class="gsap-image spiral">
+          <div class="text-box-spiral text-center">
+            <h3>24/7 Security</h3>
+            <p>We monitor and control the safety and security of your money</p>
+            <button class="button">Get Started</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="beyond-transactions mb-70">
+        <div class="text-block">
+          <h4>
+            Beyond transactions: creating
+            <span class="text-blue">happy</span> stories
+          </h4>
+          <div class="statistics">
+            <div>
+              <p class="label">
+                Happy <br />
+                customers
+              </p>
+              <h3>73<span class="text-blue">k</span></h3>
+            </div>
+            <div>
+              <p class="label">
+                Years of <br />
+                experience
+              </p>
+              <h3>10<span class="text-blue">+</span></h3>
+            </div>
+          </div>
+        </div>
+        <div class="cards-block">
+          <div class="card-image">
+            <div class="image">
+              <img src="../public/media/images/girl.jpg" alt="card avatar" />
+            </div>
+            <div>
+              <h5>It's all about the money.</h5>
+              <p class="text-blue">Joe Jackson</p>
+            </div>
+          </div>
+          <div class="card-poster">
+            <h5>
+              A penny <br />
+              saved is a <br />
+              penny <br />
+              earned.
+            </h5>
+            <p>Benjamin Franklin</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="tabs-block">
+        <div class="tabs">
+          <div class="tab">
+            <button class="tablinks" data-tab="tab1">Exchange rubles</button>
+          </div>
+          <div class="tab">
+            <button class="tablinks" data-tab="tab2">Send rubles</button>
+          </div>
+          <div class="tab">
+            <button class="tablinks" data-tab="tab3">Store currency</button>
+          </div>
+        </div>
+        <div id="tab1" class="tabcontent">
+          <div class="info-block">
+            <h3>
+              <span class="text-blue">Exchange rubles</span> for <br />the
+              currency you need
+            </h3>
+            <div class="hint">
+              <img src="../public/media/icons/credit-card-up.svg" alt="" />
+              <p>Top up with rubles and exchange for another currency</p>
+            </div>
+            <div class="hint">
+              <img src="../public/media/icons/bank-note.svg" alt="" />
+              <p>
+                If you need cash, the courier will deliver it to your address
+              </p>
+            </div>
+            <div class="hint">
+              <img src="../public/media/icons/message-chat.svg" alt="" />
+              <p>24/7 support will help you carry out any operations</p>
+            </div>
+          </div>
+          <div
+            class="image-block"
+            style="background-image: url('./public/media/images/iPhone1.png')"
+          ></div>
+        </div>
+
+        <div id="tab2" class="tabcontent">
+          <div class="info-block">
+            <h3>
+              <span class="text-blue">Send rubles</span> even if you don't have
+              Russian cards
+            </h3>
+            <div class="hint">
+              <img src="../public/media/icons/refresh.svg" alt="" />
+              <p>Exchange cryptocurrency or other currency for rubles</p>
+            </div>
+            <div class="hint">
+              <img src="../public/media/icons/bank.svg" alt="" />
+              <p>Send rubles within the application to any Russian bank</p>
+            </div>
+            <div class="hint">
+              <img src="../public/media/icons/shopping-cart.svg" alt="" />
+              <p>You can pay in rubles for any service upon request</p>
+            </div>
+          </div>
+          <div
+            class="image-block"
+            style="background-image: url('./public/media/images/iPhone2.png')"
+          ></div>
+        </div>
+
+        <div id="tab3" class="tabcontent">
+          <div class="info-block">
+            <h3>
+              Store cryptocurrency <br />
+              in <span class="text-blue">our service</span>
+            </h3>
+            <div class="hint">
+              <img src="../public/media/icons/credit-card-up.svg" alt="" />
+              <p>Exchange cryptocurrency or other currency for rubles</p>
+            </div>
+            <div class="hint">
+              <img src="../public/media/icons/refresh.svg" alt="" />
+              <p>Send rubles within the application to any Russian bank</p>
+            </div>
+            <div class="hint">
+              <img src="../public/media/icons/safe.svg" alt="" />
+              <p>You can pay in rubles for any service upon request</p>
+            </div>
+          </div>
+          <div
+            class="image-block"
+            style="background-image: url('./public/media/images/iPhone3.png')"
+          ></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="top flex column align-center">
+        <img
+          src="../public/media/icons/whatmoney-logo.svg"
+          alt="Footer WhatMoney logo"
+        />
+        <div class="follow-us">
+          <p>Follow us</p>
+          <div class="socials">
+            <a href=""
+              ><img
+                src="../public/media/icons/facebook.svg"
+                alt="facebook social icon"
+            /></a>
+            <a href=""
+              ><img
+                src="../public/media/icons/twitter.svg"
+                alt="twitter social icon"
+            /></a>
+            <a href=""
+              ><img
+                src="../public/media/icons/instagram.svg"
+                alt="instagram social icon"
+            /></a>
+            <a href=""
+              ><img
+                src="../public/media/icons/telegram.svg"
+                alt="telegram social icon"
+            /></a>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="bottom text-center">
+        <p>Copyright © 2024 WhatMoney</p>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

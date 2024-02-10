@@ -1,0 +1,48 @@
+footer {
+  background-color: var(--bg-footer);
+  margin-block: var(--spacing-60) var(--spacing-24);
+  border-radius: var(--block-border-radius);
+
+  p {
+    color: var(--text-caption);
+    font-size: var(--font-size-14);
+  }
+
+  .top {
+    padding: var(--spacing-80) var(--spacing-160) var(--spacing-40);
+
+    img {
+      margin-bottom: var(--spacing-32);
+      width: 230px;
+    }
+
+    .follow-us {
+      text-align: center;
+      p {
+        margin-bottom: var(--spacing-20);
+      }
+
+      .socials {
+        display: flex;
+        gap: var(--spacing-24);
+
+        a {
+          display: inline-flex;
+
+          img {
+            width: 24px;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .bottom {
+    padding-block: var(--spacing-24);
+
+    p {
+      font-size: var(--font-size-12);
+    }
+  }
+}
