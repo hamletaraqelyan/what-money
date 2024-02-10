@@ -12,13 +12,15 @@ header {
   padding: var(--spacing-15) var(--spacing-50);
 
   img {
-    width: 177px;
+    width: 4.92rem;
   }
 
   .lang-selector {
     position: relative;
     margin-right: var(--spacing-15);
     padding-block: var(--spacing-15);
+    font-size: var(--font-size-16);
+    font-weight: 600;
 
     .selected {
       display: flex;
@@ -27,8 +29,8 @@ header {
       img {
         margin-left: var(--spacing-5);
         display: inline-block;
-        width: 16px;
-        height: 16px;
+        width: 0.44rem;
+        height: 0.44rem;
       }
     }
 
@@ -36,7 +38,7 @@ header {
       background-color: var(--bg-white);
       position: absolute;
       left: 50%;
-      top: calc(100% - 10px);
+      top: calc(100% - 0.28rem);
       transform: translate(-50%, 10%);
       padding: var(--spacing-5) var(--spacing-15);
       -webkit-box-shadow: 1px 1px 13px -5px rgba(110, 110, 110, 1);

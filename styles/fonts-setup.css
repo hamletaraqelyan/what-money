@@ -1,0 +1,18 @@
+/* 1. Big screens from 1600px */
+@media (min-width: 1441px) {
+  html {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 1440px) {
+  html {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 1024px) {
+  html {
+    font-size: 24px;
+  }
+}

@@ -3,55 +3,55 @@
   --font-manrope: "Manrope", sans-serif;
 
   /* spacings */
-  --spacing-160: 160px;
-  --spacing-116: 116px;
-  --spacing-88: 88px;
-  --spacing-86: 86px;
-  --spacing-80: 80px;
-  --spacing-78: 78px;
-  --spacing-74: 74px;
-  --spacing-70: 70px;
-  --spacing-64: 64px;
-  --spacing-60: 60px;
-  --spacing-57: 57px;
-  --spacing-56: 56px;
-  --spacing-50: 50px;
-  --spacing-48: 48px;
-  --spacing-40: 40px;
-  --spacing-34: 34px;
-  --spacing-32: 32px;
-  --spacing-30: 30px;
-  --spacing-27: 27px;
-  --spacing-25: 25px;
-  --spacing-24: 24px;
-  --spacing-22: 22px;
-  --spacing-20: 20px;
-  --spacing-15: 15px;
-  --spacing-13: 13px;
-  --spacing-12: 12px;
-  --spacing-10: 10px;
-  --spacing-7: 7px;
-  --spacing-5: 5px;
+  --spacing-160: 4.44rem; /* (160px / 36) */
+  --spacing-116: 3.22rem; /* (116px / 36) */
+  --spacing-88: 2.44rem; /* (88px / 36) */
+  --spacing-86: 2.39rem; /* (86px / 36) */
+  --spacing-80: 2.22rem; /* (80px / 36) */
+  --spacing-78: 2.17rem; /* (78px / 36) */
+  --spacing-74: 2.06rem; /* (74px / 36) */
+  --spacing-70: 1.94rem; /* (70px / 36) */
+  --spacing-64: 1.78rem; /* (64px / 36) */
+  --spacing-60: 1.67rem; /* (60px / 36) */
+  --spacing-57: 1.58rem; /* (57px / 36) */
+  --spacing-56: 1.56rem; /* (56px / 36) */
+  --spacing-50: 1.39rem; /* (50px / 36) */
+  --spacing-48: 1.33rem; /* (48px / 36) */
+  --spacing-40: 1.11rem; /* (40px / 36) */
+  --spacing-34: 0.94rem; /* (34px / 36) */
+  --spacing-32: 0.89rem; /* (32px / 36) */
+  --spacing-30: 0.83rem; /* (30px / 36) */
+  --spacing-27: 0.75rem; /* (27px / 36) */
+  --spacing-25: 0.69rem; /* (25px / 36) */
+  --spacing-24: 0.67rem; /* (24px / 36) */
+  --spacing-22: 0.61rem; /* (22px / 36) */
+  --spacing-20: 0.56rem; /* (20px / 36) */
+  --spacing-15: 0.42rem; /* (15px / 36) */
+  --spacing-13: 0.36rem; /* (13px / 36) */
+  --spacing-12: 0.33rem; /* (12px / 36) */
+  --spacing-10: 0.28rem; /* (10px / 36) */
+  --spacing-7: 0.19rem; /* (7px / 36) */
+  --spacing-5: 0.14rem; /* (5px / 36) */
 
   /* font-sizes */
-  --font-size-116: 116px;
-  --font-size-114: 114px;
-  --font-size-96: 96px;
-  --font-size-82: 82px;
-  --font-size-80: 80px;
-  --font-size-62: 62px;
-  --font-size-52: 52px;
-  --font-size-40: 40px;
-  --font-size-36: 36px;
-  --font-size-30: 30px;
-  --font-size-26: 26px;
-  --font-size-24: 24px;
-  --font-size-22: 22px;
-  --font-size-20: 20px;
-  --font-size-18: 18px;
-  --font-size-16: 16px;
-  --font-size-14: 14px;
-  --font-size-12: 12px;
+  --font-size-116: 3.22rem; /* (116px / 36) */
+  --font-size-114: 3.17rem; /* (114px / 36) */
+  --font-size-96: 2.67rem; /* (96px / 36) */
+  --font-size-82: 2.28rem; /* (82px / 36) */
+  --font-size-80: 2.22rem; /* (80px / 36) */
+  --font-size-62: 1.72rem; /* (62px / 36) */
+  --font-size-52: 1.44rem; /* (52px / 36) */
+  --font-size-40: 1.11rem; /* (40px / 36) */
+  --font-size-36: 1rem;
+  --font-size-30: 0.83rem; /* (30px / 36) */
+  --font-size-26: 0.72rem; /* (26px / 36) */
+  --font-size-24: 0.67rem; /* (24px / 36) */
+  --font-size-22: 0.61rem; /* (22px / 36) */
+  --font-size-20: 0.56rem; /* (20px / 36) */
+  --font-size-18: 0.5rem; /* (18px / 36) */
+  --font-size-16: 0.44rem; /* (16px / 36) */
+  --font-size-14: 0.39rem; /* (14px / 36) */
+  --font-size-12: 0.33rem; /* (12px / 36) */
 
   /* colors */
   --text-title-black: #090909;

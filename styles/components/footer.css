@@ -13,7 +13,7 @@ footer {
 
     img {
       margin-bottom: var(--spacing-32);
-      width: 230px;
+      width: 6.39rem;
     }
 
     .follow-us {
@@ -30,7 +30,7 @@ footer {
           display: inline-flex;
 
           img {
-            width: 24px;
+            width: 0.67rem;
             margin-bottom: 0;
           }
         }
