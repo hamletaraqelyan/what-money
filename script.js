@@ -1,7 +1,7 @@
 $(() => {
-    $(window).on('beforeunload', function () {
-        $(window).scrollTop(0);
-    });
+    // $(window).on('beforeunload', function () {
+    //     $(window).scrollTop(0);
+    // });
 
     //rocket slider
     $(".canvas-range #slider").on('input', (e) => {
@@ -118,18 +118,36 @@ $(() => {
     //Gsap | Digital revolution 
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.to(".gsap-container", {
-        scrollTrigger: {
-            trigger: ".gsap-container",
-            toggleActions: "restart pause resume complete",
-            start: "bottom bottom",
-            end: `+=${1.5 * document.querySelector(".gsap-container").offsetHeight}`,
-            pin: true,
-            toggleClass: {
-                targets: ".human",
-                className: "show-text-block",
-                immediateRender: true
-            }
+    // Pin first section with ID "pinned-section-1"
+    ScrollTrigger.create({
+        trigger: "#pinned-section-1",
+        start: "bottom bottom",
+        end: `+=${document.querySelector("#pinned-section-1").offsetHeight}`,
+        pin: true
+    });
+
+    //Gsap | Cards animation
+    ScrollTrigger.create({
+        trigger: ".animated-cards .cards-wrapper",
+        start: "center bottom",
+        end: "center bottom",
+        toggleClass: {
+            targets: ".animated-cards .cards-wrapper",
+            className: "slide-cards",
+        },
+        once: true,
+    });
+
+    // Pin section with ID "pinned-section-2"
+    ScrollTrigger.create({
+        trigger: "#pinned-section-2",
+        start: "bottom bottom",
+        end: `+=${1.5 * document.querySelector("#pinned-section-2").offsetHeight}`,
+        pin: true,
+        toggleClass: {
+            targets: ".human",
+            className: "show-text-block",
+            immediateRender: true
         }
     });
 
@@ -197,19 +215,87 @@ $(() => {
         }
     });
 
-    //Gsap | Cards animation
-    gsap.to(".animated-cards .cards-wrapper", {
+    gsap.to(".floating-card.first", {
+        y: "-500%",
+        x: "50%",
+        rotate: "-10deg",
+        duration: 3,
         scrollTrigger: {
-            trigger: ".animated-cards .cards-wrapper",
-            start: "bottom bottom",
-            toggleActions: "play none none none",
-            toggleClass: {
-                targets: ".animated-cards .cards-wrapper",
-                className: "slide-cards",
-            },
-            once: true,
+            trigger: "#pinned-section-1",
+            start: `center bottom`,
+            end: "bottom top",
+            toggleActions: "restart pause resume complete",
+            scrub: 5,
         }
     })
+
+    gsap.to(".floating-card.second", {
+        y: "-550%",
+        x: "-50%",
+        rotate: "20deg",
+        scale: "1.5",
+        duration: 3,
+        scrollTrigger: {
+            trigger: "#pinned-section-1",
+            start: `center+=200 bottom`,
+            end: "bottom top",
+            toggleActions: "restart pause resume complete",
+            scrub: 5,
+        }
+    })
+
+    gsap.to(".floating-card.third", {
+        y: "-600%",
+        x: "20%",
+        rotate: "-20deg",
+        duration: 6,
+        scrollTrigger: {
+            trigger: "#pinned-section-1",
+            start: `bottom-=100 bottom`,
+            end: "bottom top",
+            toggleActions: "restart pause resume complete",
+            scrub: 5,
+        }
+    })
+
+    // Pin section with ID "pinned-section-3"
+    ScrollTrigger.create({
+        trigger: "#pinned-section-3",
+        start: "bottom bottom",
+        end: `+=${1.5 * document.querySelector("#pinned-section-3").offsetHeight}`,
+        pin: true,
+    });
+
+    gsap.to("#pinned-section-3 .scalable-element", {
+        scale: "1",
+        x: 0,
+        y: 0,
+        borderRadius: "24px",
+        duration: 2,
+        scrollTrigger: {
+            trigger: "#pinned-section-3",
+            start: "bottom bottom",
+            end: "bottom top",
+            toggleActions: "restart pause resume complete",
+            scrub: 1,
+            //onEnter  onLeave  onEnterBack  onLeaveBack
+        }
+    });
+
+    gsap.to("#pinned-section-3 .scalable-element .text-box", {
+        scale: "1",
+        opacity: "1",
+        y: '0',
+        duration: 5,
+        scrollTrigger: {
+            trigger: "#pinned-section-3",
+            start: "bottom bottom",
+            end: "bottom top",
+            toggleActions: "restart pause resume complete",
+            scrub: 3,
+            //onEnter  onLeave  onEnterBack  onLeaveBack
+        }
+    });
 
     //Tabs block
     function openTab() {

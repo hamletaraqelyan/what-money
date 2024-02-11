@@ -8,6 +8,7 @@ body {
 }
 
 main {
+  overflow: hidden;
   padding-top: var(--header-height);
 }
 
@@ -47,10 +48,32 @@ hr {
   background-color: var(--bg-blue);
 }
 
+.mb-120 {
+  margin-bottom: var(--spacing-120);
+}
+
 .mb-70 {
   margin-bottom: var(--spacing-70);
 }
 
 .mb-60 {
   margin-bottom: var(--spacing-60);
+}
+
+.d-none {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-inline: 6px;
+  }
+
+  .mb-120 {
+    margin-bottom: var(--spacing-50);
+  }
+
+  .mb-70 {
+    margin-bottom: var(--spacing-20);
+  }
 }

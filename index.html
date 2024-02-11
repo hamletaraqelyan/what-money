@@ -58,56 +58,65 @@
     </header>
 
     <main>
-      <section class="mb-70 currency-rate">
-        <div class="range-block">
-          <p class="subheader">Currency Rate</p>
-          <h4 class="header">
-            Navigating Exchange Horizons. Your Guide to
-            <span class="text-blue">RUB to USD</span> Currency Dynamics
-          </h4>
-          <div class="range-input">
-            <p class="label">Amount in</p>
-            <h3 class="big-amount">₽ 5,000,000</h3>
-
-            <div class="canvas-range">
-              <div class="canvas-rangeLine">
-                <span
-                  class="canvas-rangeBtn"
-                  style="left: 0%"
-                  id="canvas-rangeBtn"
-                ></span>
-              </div>
-              <input type="range" min="0" max="100" value="0" id="slider" />
-              <span></span>
-              <span class="dark">
-                <span class="dark-overlay"></span>
-              </span>
-            </div>
-
-            <hr />
-            <p class="label">Amount out</p>
-            <h4 class="small-amount">$ 55,900</h4>
-          </div>
-          <p class="text-notice">
-            Take advantage of our advanced visual analytical tools to monitor
-            and forecast currency market trends.
-          </p>
+      <section class="banner-section">
+        <div class="start-selling">
+          <img src="./public/media/icons/dollar.svg" alt="dollar icon" />
+          Start selling instantly
         </div>
-        <div class="chart-block bg-blue">
-          <p class="subheader">Currency Rate</p>
-          <h4 class="header">
-            Ruble to Dollar Journey: Charting the Exchange Landscape
-          </h4>
-          <div class="graph-block">
-            <div class="curr-rate">
-              <h5>1 RUB = 0.1178 USD</h5>
-              <p>Feb 2, 2024, 13:51 UTC</p>
+        <h1>
+          We don't change money. <br />We change your
+          <span class="text-blue">lifestyle.</span>
+        </h1>
+        <button class="button">Get Early Access</button>
+        <img
+          class="banner-photo"
+          src="./public/media/images/iphones-banner.png"
+          alt="banner iphone"
+        />
+      </section>
+      <section class="exchange mb-120">
+        <div class="exchange-wrapper">
+          <div class="exchange-card">
+            <div>
+              <p class="label">You Send</p>
+              <h5>100,000</h5>
             </div>
-            <canvas style="height: 5.56rem" id="myChart"></canvas>
+            <div class="currency-wrapper">
+              <img
+                class="currency-image"
+                src="./public/media/icons/russia-flag.svg"
+                alt="russia flag"
+              />
+              <p class="currency-name">RUB</p>
+              <img
+                class="chevron"
+                src="./public/media/icons/chevron-down.svg"
+                alt="chevron down"
+              />
+            </div>
           </div>
-          <p class="text-notice">
-            Feel the confidence in our tools and the freedom to use them.
-          </p>
+          <button class="exchange-button">
+            <img src="./public/media/icons/arrow-swap.svg" alt="arrow swap" />
+          </button>
+          <div class="exchange-card">
+            <div>
+              <p class="label">You Recieve</p>
+              <h5>1,111.00</h5>
+            </div>
+            <div class="currency-wrapper">
+              <img
+                class="currency-image"
+                src="./public/media/icons/usdt.svg"
+                alt="usdt crypto"
+              />
+              <p class="currency-name">USDT</p>
+              <img
+                class="chevron"
+                src="./public/media/icons/chevron-down.svg"
+                alt="chevron down"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -132,7 +141,34 @@
         </div>
       </section>
 
-      <section class="gsap-container mb-70">
+      <section id="pinned-section-1" class="floating-animated-cards mb-60">
+        <div class="text-block">
+          <p>No more searching for where to exchange currency</p>
+          <h2>
+            <span>Everything</span> <span class="text-blue">you need</span>
+            <br />
+            <span>is now collected in </span> <br />
+            <span class="text-blue">one place</span>
+          </h2>
+        </div>
+        <img
+          class="floating-card first"
+          src="./public/media/images/floating-cards/1.png"
+          alt="floating card animation"
+        />
+        <img
+          class="floating-card second"
+          src="./public/media/images/floating-cards/2.png"
+          alt="floating card animation"
+        />
+        <img
+          class="floating-card third"
+          src="./public/media/images/floating-cards/3.png"
+          alt="floating card animation"
+        />
+      </section>
+
+      <section id="pinned-section-2" class="gsap-container mb-60">
         <div class="gsap-image robo">
           <div class="text-box-robo">
             <h3>
@@ -157,53 +193,28 @@
           </div>
         </div>
       </section>
-
-      <section class="beyond-transactions mb-70">
-        <div class="text-block">
-          <h4>
-            Beyond transactions: creating
-            <span class="text-blue">happy</span> stories
-          </h4>
-          <div class="statistics">
-            <div>
-              <p class="label">
-                Happy <br />
-                customers
-              </p>
-              <h3>73<span class="text-blue">k</span></h3>
-            </div>
-            <div>
-              <p class="label">
-                Years of <br />
-                experience
-              </p>
-              <h3>10<span class="text-blue">+</span></h3>
-            </div>
-          </div>
+      <section class="gsap-container-mobile">
+        <div class="robo-human">
+          <h3>
+            From manual processing <br />to the
+            <span class="text-blue">digital</span> revolution
+          </h3>
+          <img src="./public/media/images/robo-human.png" alt="Robo Human" />
+          <p>
+            Experience the future of finance with secure and informed currency
+            transactions right in the palm of your hand.
+          </p>
         </div>
-        <div class="cards-block">
-          <div class="card-image">
-            <div class="image">
-              <img src="./public/media/images/girl.jpg" alt="card avatar" />
-            </div>
-            <div>
-              <h5>It's all about the money.</h5>
-              <p class="text-blue">Joe Jackson</p>
-            </div>
-          </div>
-          <div class="card-poster">
-            <h5>
-              A penny <br />
-              saved is a <br />
-              penny <br />
-              earned.
-            </h5>
-            <p>Benjamin Franklin</p>
+        <div class="spiral">
+          <div class="text-block">
+            <h3>24/7 Security</h3>
+            <p>We monitor and control the safety and security of your money</p>
+            <button class="button">Get Started</button>
           </div>
         </div>
       </section>
 
-      <section class="tabs-block">
+      <section class="tabs-block mb-120">
         <div class="tabs">
           <div class="tab">
             <button class="tablinks" data-tab="tab1">Exchange rubles</button>
@@ -290,6 +301,133 @@
             class="image-block"
             style="background-image: url('./public/media/images/iPhone3.png')"
           ></div>
+        </div>
+      </section>
+
+      <section class="map mb-60">
+        <h2 class="map-heading">
+          If you need cash, the courier <br />
+          will deliver it to your
+          <span class="text-blue">address</span>
+        </h2>
+        <div class="map-image">
+          <img src="./public/media/images/iPhone15.png" alt="Phone Image" />
+        </div>
+      </section>
+
+      <section class="currency-rate mb-70">
+        <div class="range-block">
+          <p class="subheader">Currency Rate</p>
+          <h4 class="header">
+            Navigating Exchange Horizons. Your Guide to
+            <span class="text-blue">RUB to USD</span> Currency Dynamics
+          </h4>
+          <div class="range-input">
+            <p class="label">Amount in</p>
+            <h3 class="big-amount">₽ 5,000,000</h3>
+
+            <div class="canvas-range">
+              <div class="canvas-rangeLine">
+                <span
+                  class="canvas-rangeBtn"
+                  style="left: 0%"
+                  id="canvas-rangeBtn"
+                ></span>
+              </div>
+              <input type="range" min="0" max="100" value="0" id="slider" />
+              <span></span>
+              <span class="dark">
+                <span class="dark-overlay"></span>
+              </span>
+            </div>
+
+            <hr />
+            <p class="label">Amount out</p>
+            <h4 class="small-amount">$ 55,900</h4>
+          </div>
+          <p class="text-notice">
+            Take advantage of our advanced visual analytical tools to monitor
+            and forecast currency market trends.
+          </p>
+        </div>
+        <div class="chart-block bg-blue">
+          <p class="subheader">Currency Rate</p>
+          <h4 class="header">
+            Ruble to Dollar Journey: Charting the Exchange Landscape
+          </h4>
+          <div class="graph-block">
+            <div class="curr-rate">
+              <h5>1 RUB = 0.1178 USD</h5>
+              <p>Feb 2, 2024, 13:51 UTC</p>
+            </div>
+            <canvas style="height: 5.56rem" id="myChart"></canvas>
+          </div>
+          <p class="text-notice">
+            Feel the confidence in our tools and the freedom to use them.
+          </p>
+        </div>
+      </section>
+
+      <section class="beyond-transactions mb-60">
+        <div class="text-block">
+          <h4>
+            Beyond transactions: creating
+            <span class="text-blue">happy</span> stories
+          </h4>
+          <div class="statistics">
+            <div>
+              <p class="label">
+                Happy <br />
+                customers
+              </p>
+              <h3>73<span class="text-blue">k</span></h3>
+            </div>
+            <div>
+              <p class="label">
+                Years of <br />
+                experience
+              </p>
+              <h3>10<span class="text-blue">+</span></h3>
+            </div>
+          </div>
+        </div>
+        <div class="cards-block">
+          <div class="card-image">
+            <div class="image">
+              <img src="./public/media/images/girl.jpg" alt="card avatar" />
+            </div>
+            <div>
+              <h5>It's all about the money.</h5>
+              <p class="text-blue">Joe Jackson</p>
+            </div>
+          </div>
+          <div class="card-poster">
+            <h5>
+              A penny <br />
+              saved is a <br />
+              penny <br />
+              earned.
+            </h5>
+            <p>Benjamin Franklin</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="pinned-section-3" class="the-future-arrived">
+        <div class="content-block">
+          <h2>
+            All in <span class="text-blue">one place</span> on <br />
+            any
+
+            <span class="scalable-element">
+              <div class="text-box">
+                <h2>The Future has arrived</h2>
+                <button class="button">Get Started</button>
+              </div>
+            </span>
+
+            <span class="text-move">device</span>
+          </h2>
         </div>
       </section>
     </main>

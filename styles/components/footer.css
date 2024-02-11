@@ -46,3 +46,36 @@ footer {
     }
   }
 }
+
+@media (max-width: 480px) {
+  footer {
+    .top {
+      padding: var(--spacing-48) var(--spacing-48) var(--spacing-32);
+
+      img {
+        margin-bottom: var(--spacing-24);
+        width: 206px;
+      }
+
+      .follow-us {
+        p {
+          margin-bottom: var(--spacing-18);
+        }
+
+        .socials {
+          gap: var(--spacing-24);
+
+          a {
+            img {
+              width: var(--spacing-18);
+            }
+          }
+        }
+      }
+    }
+
+    .bottom {
+      padding-block: var(--spacing-20);
+    }
+  }
+}

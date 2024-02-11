@@ -5,6 +5,8 @@
   color: var(--text-white);
   background: var(--button-gradient-background);
   border-radius: 50px;
+  cursor: pointer;
+  line-height: 140%;
 
   &.bordered {
     padding: var(--spacing-12) var(--spacing-20);
@@ -12,5 +14,12 @@
     background: transparent;
     color: var(--text-title-black);
     border: 1px solid var(--text-title-black);
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    padding: var(--spacing-12) var(--spacing-32);
+    font-size: var(--font-size-16);
   }
 }
