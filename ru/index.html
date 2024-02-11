@@ -3,7 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+
+    <!-- OpenGraph Meta Tags -->
+    <meta
+      property="og:title"
+      content="WhatMoney | Начните продавать мгновенно"
+    />
+    <meta
+      property="og:description"
+      content="Мы не меняем деньги. Мы меняем ваш стиль жизни."
+    />
+    <meta
+      property="og:image"
+      content="../public/media/icons/whatmoney-logo.svg"
+    />
+    <meta property="og:type" content="website" />
+
+    <title>WhatMoney | Начните продавать мгновенно</title>
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="WhatMoney | Начните продавать мгновенно"
+    />
+    <meta
+      name="twitter:description"
+      content="Мы не меняем деньги. Мы меняем ваш стиль жизни."
+    />
+    <meta
+      name="twitter:image"
+      content="../public/media/icons/whatmoney-logo.svg"
+    />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,6 +45,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/fonts-setup.css" />
     <link rel="stylesheet" href="../styles/variables.css" />
     <link rel="stylesheet" href="../styles/global.css" />
 
@@ -37,7 +72,7 @@
       <div class="flex align-center">
         <div class="lang-selector">
           <div class="selected">
-            RU
+            EN
             <img
               src="../public/media/icons/arrow-down.svg"
               alt="arrow down icon"
@@ -48,24 +83,293 @@
               <a href="../index.html">EN</a>
             </li>
             <li>
-              <a href="../ru/index.html">RU</a>
+              <a href="./ru/index.html">RU</a>
             </li>
           </ul>
         </div>
-        <button class="button bordered">Get Early Access</button>
+        <button class="button bordered">Получите Ранний Доступ</button>
       </div>
     </header>
 
     <main>
-      <section class="mb-70 currency-rate">
+      <section class="banner-section">
+        <div class="start-selling">
+          <img src="../public/media/icons/dollar.svg" alt="dollar icon" />
+          НАЧНИТЕ ПРОДАВАТЬ МГНОВЕННО
+        </div>
+        <h1>
+          Мы не меняем деньги.<br />
+          Мы меняем ваш <span class="text-blue">стиль жизни.</span>
+        </h1>
+        <button class="button">Получите Ранний Доступ</button>
+        <img
+          class="banner-photo"
+          src="../public/media/images/iphones-banner.png"
+          alt="banner iphone"
+        />
+      </section>
+      <section class="exchange mb-120">
+        <div class="exchange-wrapper">
+          <div class="exchange-card">
+            <div>
+              <p class="label">Вы Отправляете</p>
+              <h5>100,000</h5>
+            </div>
+            <div class="currency-wrapper">
+              <img
+                class="currency-image"
+                src="../public/media/icons/russia-flag.svg"
+                alt="russia flag"
+              />
+              <p class="currency-name">RUB</p>
+              <img
+                class="chevron"
+                src="../public/media/icons/chevron-down.svg"
+                alt="chevron down"
+              />
+            </div>
+          </div>
+          <button class="exchange-button">
+            <img src="../public/media/icons/arrow-swap.svg" alt="arrow swap" />
+          </button>
+          <div class="exchange-card">
+            <div>
+              <p class="label">Вы Получаете</p>
+              <h5>1,111.00</h5>
+            </div>
+            <div class="currency-wrapper">
+              <img
+                class="currency-image"
+                src="../public/media/icons/usdt.svg"
+                alt="usdt crypto"
+              />
+              <p class="currency-name">USDT</p>
+              <img
+                class="chevron"
+                src="../public/media/icons/chevron-down.svg"
+                alt="chevron down"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="animated-cards mb-70">
+        <div class="header">
+          <h2>
+            Позвольте своим деньгам <br />
+            работать на вас лучше
+          </h2>
+          <button></button>
+        </div>
+        <div class="cards-wrapper">
+          <div class="card-item">
+            <p>Безопасные вклады, приносящие вам реальные деньги</p>
+          </div>
+          <div class="card-item">
+            <p>Клиентская поддержка на высоком уровне</p>
+          </div>
+          <div class="card-item">
+            <p>Мгновенный обмен криптовалюты</p>
+          </div>
+          <div class="card-item">
+            <p>И это всё, что вам нужно...</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="pinned-section-1" class="floating-animated-cards mb-60">
+        <div class="text-block">
+          <p>Больше нет необходимости искать, где обменять валюту.</p>
+          <h2>
+            <span>Всё,</span> <span class="text-blue">что вам нужно,</span>
+            <br />
+            <span>теперь собрано в</span> <br />
+            <span class="text-blue">одном месте</span>
+          </h2>
+        </div>
+        <img
+          class="floating-card first"
+          src="../public/media/images/floating-cards/1.png"
+          alt="floating card animation"
+        />
+        <img
+          class="floating-card second"
+          src="../public/media/images/floating-cards/2.png"
+          alt="floating card animation"
+        />
+        <img
+          class="floating-card third"
+          src="../public/media/images/floating-cards/3.png"
+          alt="floating card animation"
+        />
+      </section>
+
+      <section id="pinned-section-2" class="gsap-container mb-60">
+        <div class="gsap-image robo">
+          <div class="text-box-robo">
+            <h3>
+              От ручной обработки до <br />
+              <span class="text-blue">цифровой</span> революции
+            </h3>
+          </div>
+        </div>
+        <div class="gsap-image human">
+          <div class="text-box">
+            <p>
+              Исследуйте будущее финансов с надёжными и контролируемыми
+              валютными переводами прямо у вас на ладони
+            </p>
+          </div>
+        </div>
+        <div class="gsap-image spiral">
+          <div class="text-box-spiral text-center">
+            <h3>24/7 Безопасность</h3>
+            <p>
+              Мы активно следим и контролируем <br />
+              безопасность ваших денег
+            </p>
+            <button class="button">Начать</button>
+          </div>
+        </div>
+      </section>
+      <section class="gsap-container-mobile">
+        <div class="robo-human">
+          <h3>
+            От ручной обработки до <br />
+            <span class="text-blue">цифровой</span> революции
+          </h3>
+          <img src="../public/media/images/robo-human.png" alt="Robo Human" />
+          <p>
+            Исследуйте будущее финансов с надёжными и контролируемыми валютными
+            переводами прямо у вас на ладони
+          </p>
+        </div>
+        <div class="spiral">
+          <div class="text-block">
+            <h3>24/7 Безопасность</h3>
+            <p>Мы активно следим и контролируем безопасность ваших денег</p>
+            <button class="button">Начать</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="tabs-block mb-120">
+        <div class="tabs">
+          <div class="tab">
+            <button class="tablinks" data-tab="tab1">ПОМЕНЯТЬ РУБЛИ</button>
+          </div>
+          <div class="tab">
+            <button class="tablinks" data-tab="tab2">ОТПРАВИТЬ РУБЛИ</button>
+          </div>
+          <div class="tab">
+            <button class="tablinks" data-tab="tab3">ХРАНЕНИЕ ВАЛЮТЫ</button>
+          </div>
+        </div>
+        <div id="tab1" class="tabcontent">
+          <div class="info-block">
+            <h3>
+              <span class="text-blue">Обменяйте рубли</span> на <br />нужную
+              валюту
+            </h3>
+            <div class="hint">
+              <img src="../public/media/icons/credit-card-up.svg" alt="" />
+              <p>Пополните рубли и обменяйте их на другую валюту</p>
+            </div>
+            <div class="hint">
+              <img src="../public/media/icons/bank-note.svg" alt="" />
+              <p>
+                Если вам нужны наличные, курьер доставит их по вашему адресу
+              </p>
+            </div>
+            <div class="hint">
+              <img src="../public/media/icons/message-chat.svg" alt="" />
+              <p>
+                Круглосуточная поддержка поможет вам выполнить любые операции
+              </p>
+            </div>
+          </div>
+          <div
+            class="image-block"
+            style="background-image: url('../public/media/images/iPhone1.png')"
+          ></div>
+        </div>
+
+        <div id="tab2" class="tabcontent">
+          <div class="info-block">
+            <h3>
+              <span class="text-blue">Отправьте рубли,</span> даже если нет
+              российских карт
+            </h3>
+            <div class="hint">
+              <img src="../public/media/icons/refresh.svg" alt="" />
+              <p>Обменяйте криптовалюту или другую валюту на рубли</p>
+            </div>
+            <div class="hint">
+              <img src="../public/media/icons/bank.svg" alt="" />
+              <p>Отправьте рубли внутри приложения в любой российский банк</p>
+            </div>
+            <div class="hint">
+              <img src="../public/media/icons/shopping-cart.svg" alt="" />
+              <p>Вы можете оплатить любую услугу по запросу в рублях</p>
+            </div>
+          </div>
+          <div
+            class="image-block"
+            style="background-image: url('../public/media/images/iPhone2.png')"
+          ></div>
+        </div>
+
+        <div id="tab3" class="tabcontent">
+          <div class="info-block">
+            <h3>
+              Храните криптовалюту <br />
+              в <span class="text-blue">нашем сервисе</span>
+            </h3>
+            <div class="hint">
+              <img src="../public/media/icons/credit-card-up.svg" alt="" />
+              <p>
+                Вы можете пополнить счет рублями или любой другой валютой в
+                нашем сервисе по запросу
+              </p>
+            </div>
+            <div class="hint">
+              <img src="../public/media/icons/refresh.svg" alt="" />
+              <p>Мгновенно обменяйте валюту на криптовалюту</p>
+            </div>
+            <div class="hint">
+              <img src="../public/media/icons/safe.svg" alt="" />
+              <p>Безопасно храните вашу криптовалюту в нашем сервисе</p>
+            </div>
+          </div>
+          <div
+            class="image-block"
+            style="background-image: url('../public/media/images/iPhone3.png')"
+          ></div>
+        </div>
+      </section>
+
+      <section class="map mb-60">
+        <h2 class="map-heading">
+          Если вам нужны наличные, <br />
+          курьер доставит их по <br />
+          вашему
+          <span class="text-blue">адресу</span>
+        </h2>
+        <div class="map-image">
+          <img src="../public/media/images/iPhone15.png" alt="Phone Image" />
+        </div>
+      </section>
+
+      <section class="currency-rate mb-70">
         <div class="range-block">
-          <p class="subheader">Currency Rate</p>
+          <p class="subheader">КУРС ВАЛЮТЫ</p>
           <h4 class="header">
-            Navigating Exchange Horizons. Your Guide to
-            <span class="text-blue">RUB to USD</span> Currency Dynamics
+            Навигация по обменным горизонтам. Ваш гид по обмену курса
+            <span class="text-blue">RUB на USD.</span>
           </h4>
           <div class="range-input">
-            <p class="label">Amount in</p>
+            <p class="label">Сумма вложения</p>
             <h3 class="big-amount">₽ 5,000,000</h3>
 
             <div class="canvas-range">
@@ -84,97 +388,55 @@
             </div>
 
             <hr />
-            <p class="label">Amount out</p>
+            <p class="label">Сумма вывода</p>
             <h4 class="small-amount">$ 55,900</h4>
           </div>
           <p class="text-notice">
-            Take advantage of our advanced visual analytical tools to monitor
-            and forecast currency market trends.
+            Воспользуйтесь нашими передовыми наглядными аналитическими
+            инструментами для мониторинга и прогнозирования тенденций валютного
+            рынка.
           </p>
         </div>
         <div class="chart-block bg-blue">
-          <p class="subheader">Currency Rate</p>
+          <p class="subheader">КУРС ВАЛЮТЫ</p>
           <h4 class="header">
-            Ruble to Dollar Journey: Charting the Exchange Landscape
+            Путь Рубля к Доллару: Анализ Динамики Обменного Курса
           </h4>
           <div class="graph-block">
             <div class="curr-rate">
               <h5>1 RUB = 0.1178 USD</h5>
               <p>Feb 2, 2024, 13:51 UTC</p>
             </div>
-            <canvas id="myChart"></canvas>
+            <canvas style="height: 5.56rem" id="myChart"></canvas>
           </div>
           <p class="text-notice">
-            Feel the confidence in our tools and the freedom to use them.
+            Почувствуйте уверенность в наших инструментах и свободу в их
+            использовании.
           </p>
         </div>
       </section>
 
-      <section class="animated-cards mb-70">
-        <div class="header">
-          <h2>Make your money <br />work smarter for you</h2>
-          <button></button>
-        </div>
-        <div class="cards-wrapper">
-          <div class="card-item">
-            <p>Safe deposits that earn you real money</p>
-          </div>
-          <div class="card-item">
-            <p>An actual customer support that cares</p>
-          </div>
-          <div class="card-item">
-            <p>Instant crypto exchange</p>
-          </div>
-          <div class="card-item">
-            <p>And that's about all you need...</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="gsap-container mb-70">
-        <div class="gsap-image robo">
-          <div class="text-box-robo">
-            <h3>
-              From manual processing <br />to the
-              <span class="text-blue">digital</span> revolution
-            </h3>
-          </div>
-        </div>
-        <div class="gsap-image human">
-          <div class="text-box">
-            <p>
-              Experience the future of finance with secure and informed currency
-              transactions right in the palm of your hand.
-            </p>
-          </div>
-        </div>
-        <div class="gsap-image spiral">
-          <div class="text-box-spiral text-center">
-            <h3>24/7 Security</h3>
-            <p>We monitor and control the safety and security of your money</p>
-            <button class="button">Get Started</button>
-          </div>
-        </div>
-      </section>
-
-      <section class="beyond-transactions mb-70">
+      <section class="beyond-transactions mb-60">
         <div class="text-block">
           <h4>
-            Beyond transactions: creating
-            <span class="text-blue">happy</span> stories
+            За пределами сделок: создание
+            <span class="text-blue">счастливых</span>
+            историй
           </h4>
           <div class="statistics">
             <div>
               <p class="label">
-                Happy <br />
-                customers
+                Счастливые
+                <br />
+                клиенты
               </p>
               <h3>73<span class="text-blue">k</span></h3>
             </div>
             <div>
               <p class="label">
-                Years of <br />
-                experience
+                Годы
+                <br />
+                опыта
               </p>
               <h3>10<span class="text-blue">+</span></h3>
             </div>
@@ -186,109 +448,36 @@
               <img src="../public/media/images/girl.jpg" alt="card avatar" />
             </div>
             <div>
-              <h5>It's all about the money.</h5>
-              <p class="text-blue">Joe Jackson</p>
+              <h5>Всё дело в деньгах.</h5>
+              <p class="text-blue">Джо Джексон</p>
             </div>
           </div>
           <div class="card-poster">
             <h5>
-              A penny <br />
-              saved is a <br />
-              penny <br />
-              earned.
+              Копейка <br />
+              рубль <br />
+              бережёт.
             </h5>
-            <p>Benjamin Franklin</p>
+            <p>Бенджамин Франклин</p>
           </div>
         </div>
       </section>
 
-      <section class="tabs-block">
-        <div class="tabs">
-          <div class="tab">
-            <button class="tablinks" data-tab="tab1">Exchange rubles</button>
-          </div>
-          <div class="tab">
-            <button class="tablinks" data-tab="tab2">Send rubles</button>
-          </div>
-          <div class="tab">
-            <button class="tablinks" data-tab="tab3">Store currency</button>
-          </div>
-        </div>
-        <div id="tab1" class="tabcontent">
-          <div class="info-block">
-            <h3>
-              <span class="text-blue">Exchange rubles</span> for <br />the
-              currency you need
-            </h3>
-            <div class="hint">
-              <img src="../public/media/icons/credit-card-up.svg" alt="" />
-              <p>Top up with rubles and exchange for another currency</p>
-            </div>
-            <div class="hint">
-              <img src="../public/media/icons/bank-note.svg" alt="" />
-              <p>
-                If you need cash, the courier will deliver it to your address
-              </p>
-            </div>
-            <div class="hint">
-              <img src="../public/media/icons/message-chat.svg" alt="" />
-              <p>24/7 support will help you carry out any operations</p>
-            </div>
-          </div>
-          <div
-            class="image-block"
-            style="background-image: url('./public/media/images/iPhone1.png')"
-          ></div>
-        </div>
+      <section id="pinned-section-3" class="the-future-arrived ru">
+        <div class="content-block">
+          <h2>
+            Всё в <span class="text-blue">одном месте</span> на <br />
+            любом
 
-        <div id="tab2" class="tabcontent">
-          <div class="info-block">
-            <h3>
-              <span class="text-blue">Send rubles</span> even if you don't have
-              Russian cards
-            </h3>
-            <div class="hint">
-              <img src="../public/media/icons/refresh.svg" alt="" />
-              <p>Exchange cryptocurrency or other currency for rubles</p>
-            </div>
-            <div class="hint">
-              <img src="../public/media/icons/bank.svg" alt="" />
-              <p>Send rubles within the application to any Russian bank</p>
-            </div>
-            <div class="hint">
-              <img src="../public/media/icons/shopping-cart.svg" alt="" />
-              <p>You can pay in rubles for any service upon request</p>
-            </div>
-          </div>
-          <div
-            class="image-block"
-            style="background-image: url('./public/media/images/iPhone2.png')"
-          ></div>
-        </div>
+            <span class="scalable-element">
+              <div class="text-box">
+                <h2>Будующее наступило</h2>
+                <button class="button">Начать</button>
+              </div>
+            </span>
 
-        <div id="tab3" class="tabcontent">
-          <div class="info-block">
-            <h3>
-              Store cryptocurrency <br />
-              in <span class="text-blue">our service</span>
-            </h3>
-            <div class="hint">
-              <img src="../public/media/icons/credit-card-up.svg" alt="" />
-              <p>Exchange cryptocurrency or other currency for rubles</p>
-            </div>
-            <div class="hint">
-              <img src="../public/media/icons/refresh.svg" alt="" />
-              <p>Send rubles within the application to any Russian bank</p>
-            </div>
-            <div class="hint">
-              <img src="../public/media/icons/safe.svg" alt="" />
-              <p>You can pay in rubles for any service upon request</p>
-            </div>
-          </div>
-          <div
-            class="image-block"
-            style="background-image: url('./public/media/images/iPhone3.png')"
-          ></div>
+            <span class="text-move">устройстве</span>
+          </h2>
         </div>
       </section>
     </main>
@@ -300,7 +489,7 @@
           alt="Footer WhatMoney logo"
         />
         <div class="follow-us">
-          <p>Follow us</p>
+          <p>Подписывайтесь на нас</p>
           <div class="socials">
             <a href=""
               ><img
@@ -327,7 +516,7 @@
       </div>
       <hr />
       <div class="bottom text-center">
-        <p>Copyright © 2024 WhatMoney</p>
+        <p>Авторское право © 2024 WhatMoney</p>
       </div>
     </footer>
 

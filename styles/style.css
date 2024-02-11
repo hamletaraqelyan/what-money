@@ -391,7 +391,6 @@
       .text-box-spiral {
         transform: scale(0.5);
         opacity: 0;
-        width: 40%;
         margin: auto;
 
         h3 {
@@ -884,6 +883,7 @@
       }
 
       h2 {
+        padding-bottom: 5px;
         background: linear-gradient(
           143deg,
           #fff 18.17%,
@@ -1295,6 +1295,7 @@
       border-radius: var(--block-border-radius);
       background: url("../public/media/images/lightbg.jpg") center no-repeat;
       background-size: cover;
+      margin-bottom: var(--spacing-20);
 
       h3 {
         margin-bottom: calc(-1 * var(--spacing-60));
@@ -1332,7 +1333,41 @@
     }
 
     .spiral {
-      display: none;
+      border-radius: var(--block-border-radius);
+      background: url("../public/media/images/spiral-mobile.jpg") center
+        no-repeat;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding-bottom: 103%;
+
+      .text-block {
+        text-align: center;
+        padding: var(--spacing-64) var(--spacing-38);
+
+        h3 {
+          background: linear-gradient(
+            143deg,
+            #fff 18.17%,
+            rgba(255, 255, 255, 0) 152.61%
+          );
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          font-size: var(--spacing-32);
+          font-weight: 400;
+          line-height: 100%;
+        }
+
+        p {
+          color: var(--text-transparent);
+          font-size: var(--font-size-18);
+          line-height: 120%;
+          margin-block: var(--spacing-14) var(--spacing-32);
+        }
+      }
     }
   }
 }
@@ -1347,6 +1382,18 @@
 
       .text-move {
         padding-left: 2rem;
+      }
+    }
+  }
+
+  .the-future-arrived.ru {
+    .content-block {
+      .scalable-element {
+        transform: scale(0.1) translate(0, 200%);
+      }
+
+      .text-move {
+        padding-left: 0;
       }
     }
   }
@@ -1378,6 +1425,14 @@
       }
     }
   }
+
+  .the-future-arrived.ru {
+    .content-block {
+      .scalable-element {
+        transform: scale(0.1) translate(-80%, 80%);
+      }
+    }
+  }
 }
 
 @media (min-width: 1280px) {
@@ -1389,6 +1444,14 @@
 
       .text-move {
         padding-left: 6rem;
+      }
+    }
+  }
+
+  .the-future-arrived.ru {
+    .content-block {
+      .scalable-element {
+        transform: scale(0.1) translate(-75%, 85%);
       }
     }
   }
@@ -1406,6 +1469,14 @@
       }
     }
   }
+
+  .the-future-arrived.ru {
+    .content-block {
+      .scalable-element {
+        transform: scale(0.1) translate(-80%, 110%);
+      }
+    }
+  }
 }
 
 @media (min-width: 1600px) {
@@ -1420,6 +1491,14 @@
       }
     }
   }
+
+  .the-future-arrived {
+    .content-block {
+      .scalable-element {
+        transform: scale(0.1) translate(-80%, 80%);
+      }
+    }
+  }
 }
 
 @media (min-width: 1920px) {
@@ -1431,6 +1510,14 @@
 
       .text-move {
         padding-left: 7rem;
+      }
+    }
+  }
+
+  .the-future-arrived.ru {
+    .content-block {
+      .scalable-element {
+        transform: scale(0.1) translate(-65%, 80%);
       }
     }
   }
