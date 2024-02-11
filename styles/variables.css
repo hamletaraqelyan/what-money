@@ -31,6 +31,7 @@
   --spacing-22: 0.61rem; /* (22px) */
   --spacing-20: 0.56rem; /* (20px) */
   --spacing-18: 0.5rem; /* (18px) */
+  --spacing-16: 0.44rem; /* (16px) */
   --spacing-15: 0.42rem; /* (15px) */
   --spacing-13: 0.36rem; /* (13px) */
   --spacing-12: 0.33rem; /* (12px) */
@@ -48,6 +49,8 @@
   --font-size-52: 1.44rem; /* (52px) */
   --font-size-40: 1.11rem; /* (40px) */
   --font-size-36: 1rem;
+  --font-size-34: 0.94rem; /* (34px) */
+  --font-size-32: 0.89rem; /* (32px) */
   --font-size-30: 0.83rem; /* (30px) */
   --font-size-26: 0.72rem; /* (26px) */
   --font-size-24: 0.67rem; /* (24px) */

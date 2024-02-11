@@ -147,7 +147,7 @@ $(() => {
   // Pin section with ID "pinned-section-2"
   ScrollTrigger.create({
     trigger: "#pinned-section-2",
-    start: "bottom bottom",
+    start: "bottom+=3% bottom",
     end: `+=${1.5 * document.querySelector("#pinned-section-2").offsetHeight}`,
     pin: true,
     toggleClass: {
@@ -317,4 +317,12 @@ $(() => {
   $(".tablinks").eq(0).addClass("active");
 
   $(".tablinks").on("click", openTab);
+
+  //Currency rate
+  //   async function getRate() {
+  //     const response = await fetch("http://example.com/movies.json");
+  //     const rateData = await response.json();
+  //     console.log(rateData);
+  //     return rateData;
+  //   }
 });

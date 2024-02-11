@@ -145,7 +145,7 @@
     }
 
     .header {
-      font-size: var(--font-size-36);
+      font-size: var(--font-size-30);
       margin-bottom: var(--spacing-64);
       font-weight: 400;
       line-height: 120%;
@@ -316,11 +316,12 @@
   border-radius: var(--block-border-radius);
 
   .gsap-image {
-    height: calc(100vh - var(--header-height));
+    height: calc(97vh - var(--header-height));
     width: 50%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    border-radius: var(--block-border-radius);
 
     &.robo {
       background-image: url("../public/media/images/robo.jpg");
@@ -380,6 +381,8 @@
 
     &.spiral {
       background-image: url("../public/media/images/spiral.jpg");
+      background-size: 110%;
+      background-position: center 27%;
       position: absolute;
       width: 100%;
       top: 0;
@@ -771,6 +774,16 @@
   }
 }
 
+.animated-cards.ru {
+  .cards-wrapper {
+    .card-item {
+      p {
+        font-size: var(--font-size-30);
+      }
+    }
+  }
+}
+
 /* floating animated cards block */
 .floating-animated-cards {
   overflow: hidden;
@@ -994,14 +1007,23 @@
       gap: var(--spacing-16);
 
       .card-item {
-        height: 13.89rem;
         border-radius: var(--block-border-radius);
         padding: var(--spacing-32) var(--spacing-50) 0 var(--spacing-24);
         width: 100%;
         background-size: 60%;
         background-position: 100% 120%;
-        height: 264px;
+        height: 300px;
 
+        p {
+          font-size: var(--font-size-24);
+        }
+      }
+    }
+  }
+
+  .animated-cards.ru {
+    .cards-wrapper {
+      .card-item {
         p {
           font-size: var(--font-size-24);
         }
@@ -1284,6 +1306,18 @@
     }
   }
 
+  .the-future-arrived.ru {
+    .content-block {
+      .scalable-element {
+        transform: scale(0.1) translate(0, 200%);
+      }
+
+      .text-move {
+        padding-left: 0;
+      }
+    }
+  }
+
   .gsap-container {
     display: none;
   }
@@ -1385,15 +1419,18 @@
       }
     }
   }
+}
 
-  .the-future-arrived.ru {
+/* just for last block */
+@media (min-width: 400px) {
+  .the-future-arrived {
     .content-block {
       .scalable-element {
-        transform: scale(0.1) translate(0, 200%);
+        transform: scale(0.1) translate(-65%, 60%);
       }
 
       .text-move {
-        padding-left: 0;
+        padding-left: 2rem;
       }
     }
   }
