@@ -217,12 +217,24 @@ $(() => {
         const name = $(this).data("name");
         const image = $(this).data("image");
 
+        let dropdowns = $(".currency-switch");
+        dropdowns = dropdowns.not(parent);
+        dropdowns.find(`.currency-item.desibled`).removeClass("desibled");
+        dropdowns
+          .find(`.currency-item[data-name=${name}]`)
+          .addClass("desibled");
+
         $(previousSibling).find(".currency-image").attr("src", image);
         $(previousSibling).find(".currency-name").text(name);
         $(inputWrapper).find("input").attr("name", name);
 
-        $("#inputWrapperFirst").find("input").val("");
-        $("#inputWrapperSecond").find("input").val("");
+        const leftInput = $("#inputWrapperFirst").find("input");
+        const leftInputName = leftInput.attr("name");
+        const rightInput = $("#inputWrapperSecond").find("input");
+        const rightInputName = rightInput.attr("name");
+
+        leftInput.val(1000);
+        rightInput.val(exchange(leftInputName, rightInputName, 1000, data));
 
         parent.find(".currency-item.active").removeClass("active");
         $(this).addClass("active");

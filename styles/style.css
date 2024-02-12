@@ -171,6 +171,13 @@
           font-size: var(--font-size-24);
           color: var(--text-body);
         }
+
+        &.desibled {
+          pointer-events: none;
+          user-select: none;
+          touch-action: none;
+          opacity: 0.5;
+        }
       }
     }
   }
@@ -282,7 +289,7 @@
             cursor: grab;
             z-index: 1;
             will-change: left;
-            transition: left 0.5s cubic-bezier(0.39, 0.575, 0.16, 0.995);
+            transition: left 50ms ease-out;
             filter: drop-shadow(0px 6px 21px rgba(24, 131, 255, 0.4));
           }
         }
@@ -340,7 +347,7 @@
             background-color: transparent;
             z-index: 1;
             will-change: left;
-            transition: left 0.3s cubic-bezier(0.39, 0.575, 0.16, 0.995);
+            /* transition: left 0.1s cubic-bezier(0.39, 0.575, 0.16, 0.995); */
 
             &::after {
               content: "";
