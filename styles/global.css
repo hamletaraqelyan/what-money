@@ -38,18 +38,18 @@ input[type="number"] {
 
 .flex {
   display: flex;
+}
 
-  &.column {
-    flex-direction: column;
-  }
+.flex.column {
+  flex-direction: column;
+}
 
-  &.align-center {
-    align-items: center;
-  }
+.flex.align-center {
+  align-items: center;
+}
 
-  &.justify-center {
-    justify-items: center;
-  }
+.flex.justify-center {
+  justify-items: center;
 }
 
 .text-center {
