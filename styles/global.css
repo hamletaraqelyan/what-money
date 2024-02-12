@@ -19,6 +19,23 @@ hr {
   border: none;
 }
 
+input {
+  border: none;
+  outline: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .flex {
   display: flex;
 
@@ -62,6 +79,11 @@ hr {
 
 .d-none {
   display: none;
+}
+
+#titleFrom,
+#titleTo {
+  text-transform: uppercase;
 }
 
 @media (max-width: 480px) {

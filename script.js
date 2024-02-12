@@ -1,15 +1,231 @@
 $(() => {
-  $(window).on("beforeunload", function () {
-    $(window).scrollTop(0);
+  //   $(window).on("beforeunload", function () {
+  //     $(window).scrollTop(0);
+  //   });
+
+  //   Currency rate
+  const usdToRub = (usd, rate) => {
+    return usd * rate;
+  };
+
+  const rubToUsd = (rub, rate) => {
+    return rub / rate;
+  };
+
+  const usdToUsdt = (number) => {
+    if (typeof number !== "number") {
+      throw new Error("Input must be a number");
+    }
+
+    let decreasePercentage;
+
+    if (number <= 5000) {
+      decreasePercentage = 0.05; // 5%
+    } else {
+      decreasePercentage = 0.03; // 3%
+    }
+
+    // Calculate the decrease amount based on the percentage
+    const decreaseAmount = number * decreasePercentage;
+
+    // Decrease the number
+    const result = number - decreaseAmount;
+
+    return result;
+  };
+
+  const rubToUsdt = (rub, rate) => {
+    const usd = rubToUsd(rub, rate);
+    return usdToUsdt(usd);
+  };
+
+  const usdtToRub = (usdt, rate) => {
+    const USD = usdToUsdt(usdt);
+    return usdToRub(USD, rate);
+  };
+
+  function roundToTwoDecimals(inputNumber) {
+    if (inputNumber === 0) {
+      return 0;
+    }
+    // Round the input number to two decimal places
+    const roundedNumber = inputNumber.toFixed(2);
+
+    return roundedNumber;
+  }
+
+  const exchange = (from, to, value, rate) => {
+    if (from === to) {
+      return value;
+    }
+
+    if (value === 0) {
+      return "";
+    } else {
+      if (from === "rub") {
+        if (to === "usd") {
+          return roundToTwoDecimals(rubToUsd(value, rate.rubToUsd));
+        } else if (to === "usdt") {
+          return roundToTwoDecimals(rubToUsdt(value, rate.rubToUsd));
+        }
+      } else if (from === "usd") {
+        if (to === "rub") {
+          return roundToTwoDecimals(usdToRub(value, rate.usdToRub));
+        } else if (to === "usdt") {
+          return roundToTwoDecimals(usdToUsdt(value));
+        }
+      } else if (from === "usdt") {
+        if (to === "rub") {
+          return roundToTwoDecimals(usdtToRub(value, rate.usdToRub));
+        } else if (to === "usd") {
+          return roundToTwoDecimals(usdToUsdt(value));
+        }
+      }
+    }
+  };
+
+  const updateInput = (input, newValue, newName) => {
+    $(input).attr("name", newName);
+    $(input).val(newValue);
+  };
+
+  const symbols = {
+    usd: "$",
+    usdt: "₮",
+    rub: "₽",
+  };
+
+  $(".currency-wrapper").on("click", (e) => {
+    $(e.currentTarget).parent().find(".currency-switch").addClass("show");
   });
 
-  //rocket slider
-  $(".canvas-range #slider").on("input", (e) => {
-    const value = $(e.target).val();
-    $(".canvas-rangeBtn").css("left", `${value}%`);
-    var transformValue = `scaleX(${value / 100}) translateY(-50%)`;
-    $(".canvas-range .dark .dark-overlay").css("transform", transformValue);
-  });
+  fetch("https://whatmoneyapi.azurewebsites.net/rb")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const RUBtoUSD = data.rubToUsd;
+
+      $("#inputWrapperSecond input").val(
+        roundToTwoDecimals(rubToUsdt(1000, RUBtoUSD))
+      );
+      $("#outMoneyNumber").text(exchange("rub", "usdt", 100000, data));
+
+      $("#inputWrapperFirst input").on("input", function () {
+        const val = +$(this).val();
+        const name = $(this).attr("name");
+
+        const secondInput = $("#inputWrapperSecond input");
+        const secondName = secondInput.attr("name");
+
+        secondInput.val(exchange(name, secondName, val, data));
+      });
+
+      $("#inputWrapperSecond input").on("input", function () {
+        const val = +$(this).val();
+        const name = $(this).attr("name");
+
+        const firstInput = $("#inputWrapperFirst input");
+        const firstInputName = firstInput.attr("name");
+
+        firstInput.val(exchange(name, firstInputName, val, data));
+      });
+
+      $("#switch-currencies").on("click", () => {
+        const firstWrapper = $("#exchangeWrapperFirst .currency-wrapper");
+        const firstWrapperDropdown = $(
+          "#exchangeWrapperFirst .currency-switch"
+        );
+        const firstInput = $("#inputWrapperFirst input");
+        const firstInpValue = +firstInput.val();
+        const firstInpName = firstInput.attr("name");
+
+        const secondWrapper = $("#exchangeWrapperSecond .currency-wrapper");
+        const secondWrapperDropdown = $(
+          "#exchangeWrapperSecond .currency-switch"
+        );
+        const secondInput = $("#inputWrapperSecond input");
+        const secondInpValue = +secondInput.val();
+        const secondInpName = secondInput.attr("name");
+
+        //first input content update
+        updateInput(
+          secondInput,
+          exchange(secondInpName, firstInpName, secondInpValue, data),
+          firstInpName
+        );
+        firstWrapper.appendTo("#exchangeWrapperSecond");
+        firstWrapperDropdown.appendTo("#exchangeWrapperSecond");
+
+        //second input content update
+        updateInput(
+          firstInput,
+          exchange(firstInpName, secondInpName, firstInpValue, data),
+          secondInpName
+        );
+        secondWrapper.appendTo("#exchangeWrapperFirst");
+        secondWrapperDropdown.appendTo("#exchangeWrapperFirst");
+
+        // //range input content update
+        // $("#titleFrom").text(secondInpName);
+        // $("#titleTo").text(firstInpName);
+
+        // $("#investedMoneySymbol").text(symbols[secondInpName]);
+        // $("#outMoneySymbol").text(symbols[firstInpName]);
+
+        // const rangeBtn = $(".rangeInputCurrency");
+        // rangeBtn.attr("data-from", secondInpName);
+        // rangeBtn.attr("data-to", firstInpName);
+      });
+
+      $(".currency-switch .currency-item").on("click", function () {
+        const parent = $(this).parent();
+        const previousSibling = parent.prev();
+        const inputWrapper = parent.prev().prev();
+
+        const name = $(this).data("name");
+        const image = $(this).data("image");
+        const type = $(this).data("type");
+
+        $(previousSibling).find(".currency-image").attr("src", image);
+        $(previousSibling).find(".currency-name").text(name);
+        $(inputWrapper).find("input").attr("name", name);
+
+        $("#inputWrapperFirst").find("input").val("");
+        $("#inputWrapperSecond").find("input").val("");
+
+        parent.find(".currency-item.active").removeClass("active");
+        $(this).addClass("active");
+        parent.removeClass("show");
+
+        if (type === "from") {
+          $("#titleFrom").text(name);
+          $("#symbolFrom").text(symbols[name]);
+        } else if (type === "to") {
+          $("#titleTo").text(name);
+        }
+      });
+
+      //rocket slider
+      $(".canvas-range #slider").on("input", (e) => {
+        const value = $(e.target).val();
+        $(".canvas-rangeBtn").css("left", `${value / 100000}%`);
+        var transformValue = `scaleX(${value / 10000000}) translateY(-50%)`;
+        $(".canvas-range .dark .dark-overlay").css("transform", transformValue);
+
+        const from = $(e.target).data("from");
+        const to = $(e.target).data("to");
+
+        $("#moneyFrom").text(value);
+        $("#moneyTo").text(exchange(from, to, value, data));
+      });
+    })
+    .catch((error) => {
+      console.error("There was a problem with the fetch operation:", error);
+    });
 
   //Chart
   var ctx = document.getElementById("myChart").getContext("2d");
@@ -317,12 +533,4 @@ $(() => {
   $(".tablinks").eq(0).addClass("active");
 
   $(".tablinks").on("click", openTab);
-
-  //Currency rate
-  //   async function getRate() {
-  //     const response = await fetch("http://example.com/movies.json");
-  //     const rateData = await response.json();
-  //     console.log(rateData);
-  //     return rateData;
-  //   }
 });

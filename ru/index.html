@@ -110,10 +110,10 @@
       </section>
       <section class="exchange mb-120">
         <div class="exchange-wrapper">
-          <div class="exchange-card">
-            <div>
-              <p class="label">Вы Отправляете</p>
-              <h5>100,000</h5>
+          <div class="exchange-card" id="exchangeWrapperFirst">
+            <div class="inputWrapper" id="inputWrapperFirst">
+              <label for="rub">Вы Отправляете</label>
+              <input type="number" name="rub" value="1000" />
             </div>
             <div class="currency-wrapper">
               <img
@@ -128,14 +128,60 @@
                 alt="chevron down"
               />
             </div>
+            <div class="currency-switch">
+              <div
+                data-name="usdt"
+                data-type="from"
+                data-image="../public/media/icons/usdt.svg"
+                class="currency-item"
+              >
+                <img
+                  class="currency-image"
+                  src="../public/media/icons/usdt.svg"
+                  alt="russia flag"
+                />
+                <p class="currency-name">USDT</p>
+                <span class="currency-name-long">Tether</span>
+              </div>
+
+              <div
+                data-name="usd"
+                data-type="from"
+                data-image="../public/media/icons/usd.svg"
+                class="currency-item"
+              >
+                <img
+                  class="currency-image"
+                  src="../public/media/icons/usd.svg"
+                  alt="russia flag"
+                />
+                <p class="currency-name">USD</p>
+                <span class="currency-name-long">US Dollar</span>
+              </div>
+
+              <div
+                data-name="rub"
+                data-type="from"
+                data-image="../public/media/icons/russia-flag.svg"
+                class="currency-item active"
+              >
+                <img
+                  class="currency-image"
+                  src="../public/media/icons/russia-flag.svg"
+                  alt="russia flag"
+                />
+                <p class="currency-name">RUB</p>
+                <span class="currency-name-long">Russian Ruble</span>
+              </div>
+            </div>
           </div>
-          <button class="exchange-button">
+          <button class="exchange-button" id="switch-currencies">
             <img src="../public/media/icons/arrow-swap.svg" alt="arrow swap" />
           </button>
-          <div class="exchange-card">
-            <div>
-              <p class="label">Вы Получаете</p>
-              <h5>1,111.00</h5>
+          <div class="exchange-card" id="exchangeWrapperSecond">
+            <div class="inputWrapper" id="inputWrapperSecond">
+              <label for="usdt">Вы Получаете</label>
+              <input type="number" name="usdt" />
             </div>
             <div class="currency-wrapper">
               <img
@@ -149,6 +195,52 @@
                 src="../public/media/icons/chevron-down.svg"
                 alt="chevron down"
               />
+            </div>
+            <div class="currency-switch">
+              <div
+                data-name="usdt"
+                data-type="to"
+                data-image="../public/media/icons/usdt.svg"
+                class="currency-item active"
+              >
+                <img
+                  class="currency-image"
+                  src="../public/media/icons/usdt.svg"
+                  alt="russia flag"
+                />
+                <p class="currency-name">USDT</p>
+                <span class="currency-name-long">Tether</span>
+              </div>
+
+              <div
+                data-name="usd"
+                data-type="to"
+                data-image="../public/media/icons/usd.svg"
+                class="currency-item"
+              >
+                <img
+                  class="currency-image"
+                  src="../public/media/icons/usd.svg"
+                  alt="russia flag"
+                />
+                <p class="currency-name">USD</p>
+                <span class="currency-name-long">US Dollar</span>
+              </div>
+
+              <div
+                data-name="rub"
+                data-type="to"
+                data-image="../public/media/icons/russia-flag.svg"
+                class="currency-item"
+              >
+                <img
+                  class="currency-image"
+                  src="../public/media/icons/russia-flag.svg"
+                  alt="russia flag"
+                />
+                <p class="currency-name">RUB</p>
+                <span class="currency-name-long">Russian Ruble</span>
+              </div>
             </div>
           </div>
         </div>
@@ -366,11 +458,17 @@
           <p class="subheader">КУРС ВАЛЮТЫ</p>
           <h4 class="header">
             Навигация по обменным горизонтам. Ваш гид по обмену курса
-            <span class="text-blue">RUB на USD.</span>
+            <span class="text-blue">
+              <span id="titleFrom">RUB</span> на
+              <span id="titleTo"> USDT</span>.
+            </span>
           </h4>
           <div class="range-input">
             <p class="label">Сумма вложения</p>
-            <h3 class="big-amount">₽ 5,000,000</h3>
+            <h3 id="investedMoney" class="big-amount">
+              <span id="symbolFrom">₽</span>
+              <span id="moneyFrom">100000</span>
+            </h3>
 
             <div class="canvas-range">
               <div class="canvas-rangeLine">
@@ -380,7 +478,16 @@
                   id="canvas-rangeBtn"
                 ></span>
               </div>
-              <input type="range" min="0" max="100" value="0" id="slider" />
+              <input
+                class="rangeInputCurrency"
+                data-from="rub"
+                data-to="usdt"
+                type="range"
+                min="100000"
+                max="10000000"
+                value="100000"
+                id="slider"
+              />
               <span></span>
               <span class="dark">
                 <span class="dark-overlay"></span>
@@ -388,8 +495,13 @@
             </div>
 
             <hr />
-            <p class="label">Сумма вывода</p>
-            <h4 class="small-amount">$ 55,900</h4>
+            <span>
+              <p class="label">Сумма вывода</p>
+              <h4 class="small-amount">
+                <span id="symbolTo">₮</span>
+                <span id="moneyTo">55,900</span>
+              </h4>
+            </span>
           </div>
           <p class="text-notice">
             Воспользуйтесь нашими передовыми наглядными аналитическими
