@@ -3,6 +3,50 @@ $(() => {
   //     $(window).scrollTop(0);
   //   });
 
+  function addCommas(number) {
+    // Handle non-numeric input gracefully
+    if (isNaN(number)) {
+      return "Invalid input: Enter a valid number.";
+    }
+
+    // Convert to string for formatting
+    let numString = number.toString();
+
+    // Split positive and negative signs (if present)
+    let sign = "";
+    if (numString.startsWith("-")) {
+      sign = "-";
+      numString = numString.slice(1); // Remove the sign from the string
+    }
+
+    // Split integer and decimal parts, handle decimals gracefully
+    let decimalIndex = numString.indexOf(".");
+    let integerPart,
+      decimalPart = "";
+    if (decimalIndex >= 0) {
+      integerPart = numString.slice(0, decimalIndex);
+      decimalPart = numString.slice(decimalIndex);
+    } else {
+      integerPart = numString;
+    }
+
+    // Reverse the integer part, insert commas every 3 digits
+    let reversedIntegerPart = integerPart.split("").reverse().join("");
+    let formattedIntegerPart = "";
+    for (let i = 0; i < reversedIntegerPart.length; i++) {
+      if (i > 0 && i % 3 === 0) {
+        formattedIntegerPart += ",";
+      }
+      formattedIntegerPart += reversedIntegerPart[i];
+    }
+
+    // Reverse the formatted integer part to get the correct order
+    formattedIntegerPart = formattedIntegerPart.split("").reverse().join("");
+
+    // Combine sign, formatted integer part, and decimal part (if applicable)
+    return sign + formattedIntegerPart + decimalPart;
+  }
+
   //   Currency rate
   const usdToRub = (usd, rate) => {
     return usd * rate;
@@ -89,13 +133,8 @@ $(() => {
     $(input).val(newValue);
   };
 
-  const symbols = {
-    usd: "$",
-    usdt: "₮",
-    rub: "₽",
-  };
-
   $(".currency-wrapper").on("click", (e) => {
+    e.stopPropagation();
     $(e.currentTarget).parent().find(".currency-switch").addClass("show");
   });
 
@@ -112,7 +151,7 @@ $(() => {
       $("#inputWrapperSecond input").val(
         roundToTwoDecimals(rubToUsdt(1000, RUBtoUSD))
       );
-      $("#outMoneyNumber").text(exchange("rub", "usdt", 100000, data));
+      $("#moneyTo").text(addCommas(exchange("rub", "usdt", 100000, data)));
 
       $("#inputWrapperFirst input").on("input", function () {
         const val = +$(this).val();
@@ -168,17 +207,6 @@ $(() => {
         );
         secondWrapper.appendTo("#exchangeWrapperFirst");
         secondWrapperDropdown.appendTo("#exchangeWrapperFirst");
-
-        // //range input content update
-        // $("#titleFrom").text(secondInpName);
-        // $("#titleTo").text(firstInpName);
-
-        // $("#investedMoneySymbol").text(symbols[secondInpName]);
-        // $("#outMoneySymbol").text(symbols[firstInpName]);
-
-        // const rangeBtn = $(".rangeInputCurrency");
-        // rangeBtn.attr("data-from", secondInpName);
-        // rangeBtn.attr("data-to", firstInpName);
       });
 
       $(".currency-switch .currency-item").on("click", function () {
@@ -188,7 +216,6 @@ $(() => {
 
         const name = $(this).data("name");
         const image = $(this).data("image");
-        const type = $(this).data("type");
 
         $(previousSibling).find(".currency-image").attr("src", image);
         $(previousSibling).find(".currency-name").text(name);
@@ -200,14 +227,21 @@ $(() => {
         parent.find(".currency-item.active").removeClass("active");
         $(this).addClass("active");
         parent.removeClass("show");
-
-        if (type === "from") {
-          $("#titleFrom").text(name);
-          $("#symbolFrom").text(symbols[name]);
-        } else if (type === "to") {
-          $("#titleTo").text(name);
-        }
       });
+
+      // Identify the container element
+      function handleOutsideClick(event) {
+        const container = $(".currency-switch");
+
+        if (
+          !container.is(event.target) &&
+          container.has(event.target).length === 0
+        ) {
+          container.removeClass("show");
+        }
+      }
+
+      $(document).on("mousedown", handleOutsideClick);
 
       //rocket slider
       $(".canvas-range #slider").on("input", (e) => {
@@ -216,11 +250,8 @@ $(() => {
         var transformValue = `scaleX(${value / 10000000}) translateY(-50%)`;
         $(".canvas-range .dark .dark-overlay").css("transform", transformValue);
 
-        const from = $(e.target).data("from");
-        const to = $(e.target).data("to");
-
-        $("#moneyFrom").text(value);
-        $("#moneyTo").text(exchange(from, to, value, data));
+        $("#moneyFrom").text(addCommas(value));
+        $("#moneyTo").text(addCommas(exchange("rub", "usdt", value, data)));
       });
     })
     .catch((error) => {
