@@ -345,6 +345,13 @@
 
     .header {
       color: var(--text-white);
+
+      .phantomText {
+        opacity: 0;
+        pointer-events: none;
+        user-select: none;
+        visibility: hidden;
+      }
     }
 
     .graph-block {
@@ -977,6 +984,12 @@
         margin-bottom: var(--spacing-40);
       }
     }
+  }
+}
+
+@media (max-width: 1024px) {
+  .phantomText {
+    display: none;
   }
 }
 
