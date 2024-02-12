@@ -1271,7 +1271,7 @@
   .currency-rate .range-block,
   .currency-rate .chart-block {
     width: 100%;
-    padding: var(--spacing-32) var(--spacing-24);
+    padding: var(--spacing-24);
   }
 
   .currency-rate .range-block .subheader,
@@ -1306,7 +1306,7 @@
   }
 
   .currency-rate .range-block .range-input .big-amount {
-    font-size: var(--font-size-44);
+    font-size: var(--font-size-38);
   }
 
   .currency-rate .range-block .range-input .small-amount {
