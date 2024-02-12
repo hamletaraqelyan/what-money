@@ -1,7 +1,7 @@
 $(() => {
-  //   $(window).on("beforeunload", function () {
-  //     $(window).scrollTop(0);
-  //   });
+  $(window).on("beforeunload", function () {
+    $(window).scrollTop(0);
+  });
 
   function addCommas(number) {
     // Handle non-numeric input gracefully
