@@ -37,7 +37,7 @@
   font-size: var(--font-size-82);
   color: var(--text-title-black);
   font-weight: 500;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   text-align: center;
   line-height: 106%;
   margin-bottom: var(--spacing-40);
@@ -95,7 +95,7 @@
   font-size: var(--font-size-52);
   font-weight: 500;
   line-height: 106%;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   border-bottom: 1px solid var(--bg-seperator);
   padding-bottom: var(--spacing-5);
   border-radius: 0;
@@ -203,6 +203,13 @@
 }
 /* exchange block */
 
+/* swap now */
+.swap-now {
+  display: flex;
+  justify-content: center;
+}
+/* swap now */
+
 /* currency rate block */
 .currency-rate {
   display: flex;
@@ -230,14 +237,14 @@
   font-size: var(--font-size-30);
   margin-bottom: var(--spacing-64);
   font-weight: 400;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   line-height: 120%;
   color: var(--text-title-black);
 }
 
 .currency-rate .range-block .text-notice,
 .currency-rate .chart-block .text-notice {
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   font-size: var(--font-size-24);
   color: var(--text-gray);
   line-height: 120%;
@@ -457,7 +464,7 @@
 .gsap-container .gsap-image.robo .text-box-robo h3 {
   font-size: var(--font-size-80);
   font-weight: 500;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   background: linear-gradient(
     143deg,
     #fff 18.17%,
@@ -479,7 +486,7 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   width: 100%;
   padding-inline: 7.5% 10%;
   padding-bottom: 10%;
@@ -517,7 +524,7 @@
 .gsap-container .gsap-image.spiral .text-box-spiral h3 {
   font-size: var(--font-size-80);
   font-weight: 500;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   background: linear-gradient(
     143deg,
     #fff 18.17%,
@@ -534,7 +541,7 @@
   font-size: var(--font-size-30);
   color: var(--text-transparent);
   margin-bottom: var(--spacing-32);
-  letter-spacing: -2px;
+  letter-spacing: -1px;
 }
 
 .gsap-container-mobile {
@@ -569,7 +576,7 @@
   margin-bottom: -5px;
   line-height: 100%;
   font-size: var(--font-size-62);
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   font-weight: 400;
   background: linear-gradient(
     143deg,
@@ -595,7 +602,7 @@
 .beyond-transactions .text-block .statistics h3 {
   color: var(--text-white);
   font-weight: 500;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   font-size: var(--font-size-96);
 }
 
@@ -633,7 +640,7 @@
 .beyond-transactions .cards-block .card-image h5 {
   font-size: var(--font-size-36);
   font-weight: 400;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   color: var(--text-white);
   margin-bottom: var(--spacing-15);
 }
@@ -716,7 +723,7 @@
 
 .tabs-block .tabcontent .info-block h3 {
   font-size: var(--font-size-62);
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   font-weight: 500;
   margin-bottom: var(--spacing-74);
 }
@@ -730,7 +737,7 @@
   color: var(--text-body);
   font-size: var(--font-size-22);
   margin-top: var(--spacing-5);
-  letter-spacing: -2px;
+  letter-spacing: -1px;
 }
 
 .tabs-block .tabcontent .image-block {
@@ -770,7 +777,7 @@
 .map .map-heading {
   font-size: var(--font-size-80);
   font-weight: 500;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   text-align: center;
   background: linear-gradient(
     142.89deg,
@@ -791,11 +798,13 @@
 
 .map .map-image {
   padding: 0 var(--spacing-64) var(--spacing-238) var(--spacing-64);
-  margin-top: var(--spacing-50);
+  margin-top: var(--spacing-120);
+  display: flex;
+  justify-content: center;
 }
 
 .map .map-image img {
-  width: 100%;
+  width: 53.5%;
 }
 
 /* animated cards block */
@@ -883,7 +892,7 @@
 .animated-cards .cards-wrapper.slide-cards .card-item {
   transform: translateX(0);
   font-weight: 500;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
 }
 
 .animated-cards.ru .cards-wrapper .card-item p {
@@ -973,10 +982,7 @@
   letter-spacing: -4px;
   text-align: center;
   line-height: 100%;
-}
-
-.the-future-arrived .content-block h2 .text-move {
-  display: inline-block;
+  transform: translateY(-30%);
 }
 
 .the-future-arrived .content-block .scalable-element {
@@ -991,6 +997,7 @@
   border-radius: 100px;
   background: url("../public/media/images/planet.jpg") center no-repeat;
   background-size: cover;
+  transform: scale(0.1) translateY(130%);
 }
 
 .the-future-arrived .content-block .scalable-element .text-box {
@@ -1014,7 +1021,7 @@
   -webkit-text-fill-color: transparent;
   font-size: var(--font-size-116);
   font-weight: 500;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   margin-bottom: var(--spacing-40);
 }
 
@@ -1184,6 +1191,7 @@
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
+    margin-bottom: var(--spacing-20);
   }
 
   .tabs-block .tabs .tablinks {
@@ -1505,89 +1513,5 @@
 }
 
 /* just for last block */
-@media (min-width: 320px) {
-  .the-future-arrived .content-block .scalable-element {
-    transform: scale(0.1) translate(0, 60%);
-  }
-
-  .the-future-arrived .content-block .text-move {
-    padding-left: 2rem;
-  }
-}
-
-/* just for last block */
-@media (min-width: 400px) {
-  .the-future-arrived .content-block .scalable-element {
-    transform: scale(0.1) translate(-65%, 60%);
-  }
-
-  .the-future-arrived .content-block .text-move {
-    padding-left: 2rem;
-  }
-}
-
-@media (min-width: 720px) {
-  .the-future-arrived .content-block .scalable-element {
-    transform: scale(0.1) translate(-70%, 70%);
-  }
-
-  .the-future-arrived .content-block .text-move {
-    padding-left: 4rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .the-future-arrived .content-block .scalable-element {
-    transform: scale(0.1) translate(-50%, 70%);
-  }
-
-  .the-future-arrived .content-block .text-move {
-    padding-left: 5rem;
-  }
-}
-
-@media (min-width: 1280px) {
-  .the-future-arrived .content-block .scalable-element {
-    transform: scale(0.1) translate(-45%, 80%);
-  }
-
-  .the-future-arrived .content-block .text-move {
-    padding-left: 6rem;
-  }
-}
-
-@media (min-width: 1440px) {
-  .the-future-arrived .content-block .scalable-element {
-    transform: scale(0.1) translate(-50%, 90%);
-  }
-
-  .the-future-arrived .content-block .text-move {
-    padding-left: 5rem;
-  }
-}
-
-@media (min-width: 1600px) {
-  .the-future-arrived .content-block .scalable-element {
-    transform: scale(0.1) translate(-45%, 80%);
-  }
-
-  .the-future-arrived .content-block .scalable-element {
-    transform: scale(0.1) translate(-80%, 80%);
-  }
-}
-
-@media (min-width: 1920px) {
-  .the-future-arrived .content-block .scalable-element {
-    transform: scale(0.1) translate(-37%, 80%);
-  }
-
-  .the-future-arrived.ru .content-block .scalable-element {
-    transform: scale(0.1) translate(-65%, 80%);
-  }
-
-  .the-future-arrived .content-block .text-move {
-    padding-left: 7rem;
-  }
-}
 
 /* just for last block */
