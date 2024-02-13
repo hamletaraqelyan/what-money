@@ -44,6 +44,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <link rel="stylesheet" href="../styles/reset.css" />
     <link rel="stylesheet" href="../styles/fonts-setup.css" />
     <link rel="stylesheet" href="../styles/variables.css" />
@@ -52,6 +53,7 @@
     <link rel="stylesheet" href="../styles//components/header.css" />
     <link rel="stylesheet" href="../styles/components/buttons.css" />
     <link rel="stylesheet" href="../styles/components/footer.css" />
+    <link rel="stylesheet" href="../styles/components/popup.css" />
 
     <link rel="stylesheet" href="../styles/style.css" />
 
@@ -60,8 +62,6 @@
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
       crossorigin="anonymous"
     ></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
   </head>
   <body>
     <header>
@@ -87,7 +87,7 @@
             </li>
           </ul>
         </div>
-        <button class="button bordered">Получите Ранний Доступ</button>
+        <button class="button bordered open-modal-trigger">Получите ранний доступ</button>
       </div>
     </header>
 
@@ -101,7 +101,7 @@
           Мы не меняем деньги.<br />
           Мы меняем ваш <span class="text-blue">стиль жизни.</span>
         </h1>
-        <button class="button">Получите Ранний Доступ</button>
+        <button class="button open-modal-trigger">Получите ранний доступ</button>
         <img
           class="banner-photo"
           src="../public/media/images/iphones-banner.png"
@@ -248,7 +248,7 @@
       </section>
 
       <section class="swap-now mb-120">
-        <button class="button">Обменять сейчас</button>
+        <a class="button" href="https://t.me/WhatMoneyExchange" target="_blank">Обменять сейчас</a>
       </section>
 
       <section class="animated-cards ru mb-70">
@@ -326,7 +326,7 @@
               Мы активно следим и контролируем <br />
               безопасность ваших денег
             </p>
-            <button class="button">Начать</button>
+            <button class="button open-modal-trigger">Начать</button>
           </div>
         </div>
       </section>
@@ -346,7 +346,7 @@
           <div class="text-block">
             <h3>24/7 Безопасность</h3>
             <p>Мы активно следим и контролируем безопасность ваших денег</p>
-            <button class="button min-width">Начать</button>
+            <button class="button min-width open-modal-trigger">Начать</button>
           </div>
         </div>
       </section>
@@ -579,7 +579,7 @@
           <div class="scalable-element">
             <div class="text-box">
               <h2>Будущее наступило</h2>
-              <button class="button min-width">Начать</button>
+              <button class="button min-width open-modal-trigger">Начать</button>
             </div>
           </span>
         </div>
@@ -610,11 +610,12 @@
                 src="../public/media/icons/instagram.svg"
                 alt="instagram social icon"
             /></a>
-            <a href=""
-              ><img
+            <a href="https://t.me/WhatMoneyExchange" target="_blank">
+              <img
                 src="../public/media/icons/telegram.svg"
                 alt="telegram social icon"
-            /></a>
+              />
+            </a>
           </div>
         </div>
       </div>
@@ -624,9 +625,37 @@
       </div>
     </footer>
 
+    <div id="submition-popup" class="submition-popup">
+      <h3>Ранний доступ</h3>
+      <p>Наше веб-приложение находится на завершающем этапе разработки. Оставьте свои данные и мы свяжемся с вами, как только WhatMoney будет готово.</p>
+      <form action="#" method="post" id="early-access-form">
+        <label for="firstName">Имя</label>
+        <input id="firstName" name="firstName" type="text" placeholder="Введите ваше имя">
+        <label for="lastName">Фамилия</label>
+        <input id="lastName" name="lastName" type="text" placeholder="Введите вашу фамилию">
+        <label for="email">Электронная почта</label>
+        <input id="email" name="email" type="email" placeholder="Введите вашу электронную почту">
+        <button type="submit" class="button" id="submit-form">Получить ранний доступ</button>
+      </form>
+    </div>
+
+    <div id="thank-you-popup" class="thank-you-popup ru">
+      <div class="popup-top-image"></div>
+      <h3><span class="text-blue"> Спасибо </span><br> за регистрацию!</h3>
+      <p>Мы отправим вам письмо на <span class="text-blue" id="user-email">example@gmail.com</span> как только WhatMoney станет доступен.</p>
+      <p>Если вы хотите совершить обмен прямо сейчас, вы можете связаться с нашим менеджером в Telegram.</p>
+      <a class="button" href="https://t.me/WhatMoneyExchange" target="_blank">Связаться с менеджером</a>
+      <a class="button light" href="#" rel="modal:close">На главную страницу</a>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    
     <script src="../script.js"></script>
+    <script src="../app/popup-script.js"></script>
   </body>
 </html>

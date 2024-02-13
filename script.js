@@ -138,6 +138,37 @@ $(() => {
     $(e.currentTarget).parent().find(".currency-switch").addClass("show");
   });
 
+  const getTodayInFormat = () => {
+    const currentDate = new Date();
+    const months = [
+      "JAN",
+      "FEB",
+      "MAR",
+      "APR",
+      "MAY",
+      "JUN",
+      "JUL",
+      "AUG",
+      "SEP",
+      "OCT",
+      "NOV",
+      "DEC",
+    ];
+    const month = months[currentDate.getMonth()];
+    const date = currentDate.getDate();
+    const year = currentDate.getFullYear();
+    const hours = currentDate.getHours();
+    const minutes = currentDate.getMinutes();
+
+    return `${month} ${date}, ${year}, ${hours}:${
+      minutes < 10 ? "0" + minutes : minutes
+    } UTC`;
+  };
+
+  // console.log(getTodayInFormat());
+
+  //Chart
+
   fetch("https://whatmoneyapi.azurewebsites.net/rb")
     .then((response) => {
       if (!response.ok) {
@@ -241,7 +272,6 @@ $(() => {
         parent.removeClass("show");
       });
 
-      // Identify the container element
       function handleOutsideClick(event) {
         const container = $(".currency-switch");
 
@@ -259,7 +289,7 @@ $(() => {
       $(".canvas-range #slider").on("input", (e) => {
         const value = $(e.target).val();
         $(".canvas-rangeBtn").css("left", `${value / 100000}%`);
-        var transformValue = `scaleX(${value / 10000000}) translateY(-50%)`;
+        const transformValue = `scaleX(${value / 10000000}) translateY(-50%)`;
         $(".canvas-range .dark .dark-overlay").css("transform", transformValue);
 
         $("#moneyFrom").text(addCommas(value));
@@ -270,115 +300,156 @@ $(() => {
       console.error("There was a problem with the fetch operation:", error);
     });
 
-  //Chart
-  var ctx = document.getElementById("myChart").getContext("2d");
+  $.ajax({
+    url: "https://whatmoneyapi.azurewebsites.net/rates", // Sample API endpoint
+    type: "GET",
+    success: function (fetchData) {
+      //Chart
+      const ctx = document.getElementById("myChart").getContext("2d");
 
-  const data = [];
-  let prev = 100;
-  for (let i = 0; i < 100; i++) {
-    prev += 5 - Math.random() * 10;
-    data.push({ x: i, y: prev });
-  }
+      const data = [
+        { x: "2023-01-14", y: 89.08 },
+        { x: "2023-01-15", y: 88.53 },
+        { x: "2023-01-16", y: 87.91 },
+        { x: "2023-01-17", y: 88.16 },
+        { x: "2023-01-18", y: 89.05 },
+        { x: "2023-01-19", y: 89.28 },
+        { x: "2023-01-20", y: 89.49 },
+        { x: "2023-01-21", y: 89.43 },
+        { x: "2023-01-22", y: 88.48 },
+        { x: "2023-01-23", y: 88.17 },
+        { x: "2023-01-24", y: 88.62 },
+        { x: "2023-01-25", y: 88.72 },
+        { x: "2023-01-26", y: 89.49 },
+        { x: "2023-01-27", y: 89.99 },
+        { x: "2023-01-28", y: 89.91 },
+        { x: "2023-01-29", y: 90.16 },
+        { x: "2023-01-30", y: 90.11 },
+        { x: "2023-01-31", y: 90.29 },
+        { x: "2023-02-01", y: 90.4 },
+        { x: "2023-02-02", y: 90.76 },
+        { x: "2023-02-03", y: 91.13 },
+        { x: "2023-02-04", y: 91.03 },
+        { x: "2023-02-05", y: 90.92 },
+        { x: "2023-02-06", y: 91.44 },
+        { x: "2023-02-07", y: 91.32 },
+        { x: "2023-02-08", y: 91.63 },
+        { x: "2023-02-09", y: 91.82 },
+        { x: "2023-02-10", y: 91.81 },
+        { x: "2023-02-11", y: 91.7 },
+        { x: "2023-02-12", y: 91.26 },
+        { x: "2023-02-13", y: 92.02 },
+      ];
 
-  const totalDuration = 1500;
-  const delayBetweenPoints = totalDuration / data.length;
-  const previousY = (ctx) =>
-    ctx.index === 0
-      ? ctx.chart.scales.y.getPixelForValue(100)
-      : ctx.chart
-          .getDatasetMeta(ctx.datasetIndex)
-          .data[ctx.index - 1].getProps(["y"], true).y;
-  const animation = {
-    x: {
-      type: "number",
-      duration: delayBetweenPoints,
-      from: NaN, // the point is initially skipped
-      delay(ctx) {
-        if (ctx.type !== "data" || ctx.xStarted) {
-          return 0;
-        }
-        ctx.xStarted = true;
-        return ctx.index * delayBetweenPoints;
-      },
-    },
-    y: {
-      type: "number",
-      duration: delayBetweenPoints,
-      from: previousY,
-      delay(ctx) {
-        if (ctx.type !== "data" || ctx.yStarted) {
-          return 0;
-        }
-        ctx.yStarted = true;
-        return ctx.index * delayBetweenPoints;
-      },
-    },
-  };
-
-  var gradient = ctx.createLinearGradient(0, -2000, 0, 300);
-  gradient.addColorStop(0, "rgba(24, 131, 255, 1)");
-  gradient.addColorStop(1, "rgba(24, 131, 255, 0)");
-
-  const config = {
-    type: "line",
-    data: {
-      datasets: [
-        {
-          fill: true,
-          backgroundColor: gradient,
-          borderWidth: 3,
-          borderColor: "#1883FF",
-          tension: 0.5,
-          radius: 0,
-          pointRadius: 0,
-          data: data,
-        },
-      ],
-    },
-    options: {
-      animation,
-      interaction: {
-        intersect: false,
-      },
-      plugins: {
-        legend: false,
-      },
-      scales: {
+      const totalDuration = 1500;
+      const delayBetweenPoints = totalDuration / data.length;
+      const previousY = (ctx) =>
+        ctx.index === 0
+          ? ctx.chart.scales.y.getPixelForValue(100)
+          : ctx.chart
+              .getDatasetMeta(ctx.datasetIndex)
+              .data[ctx.index - 1].getProps(["y"], true).y;
+      const animation = {
         x: {
-          type: "linear",
-          grid: {
-            display: false, // Remove grid lines on the x-axis
-            drawBorder: false, // Remove left border
-          },
-          ticks: {
-            autoSkip: true,
-            maxRotation: 0,
-            minRotation: 0,
-            maxTicksLimit: 6,
-            color: "#090909",
-            font: {
-              size: 14,
-            },
+          type: "number",
+          duration: delayBetweenPoints,
+          from: NaN, // the point is initially skipped
+          delay(ctx) {
+            if (ctx.type !== "data" || ctx.xStarted) {
+              return 0;
+            }
+            ctx.xStarted = true;
+            return ctx.index * delayBetweenPoints;
           },
         },
         y: {
-          ticks: {
-            maxTicksLimit: 4,
-            color: "#9D9D9D",
-            font: {
-              size: 14,
-            },
-          },
-          grid: {
-            display: false, // Remove grid lines on the y-axis
-            drawBorder: false, // Remove left border
+          type: "number",
+          duration: delayBetweenPoints,
+          from: previousY,
+          delay(ctx) {
+            if (ctx.type !== "data" || ctx.yStarted) {
+              return 0;
+            }
+            ctx.yStarted = true;
+            return ctx.index * delayBetweenPoints;
           },
         },
-      },
-    },
-  };
+      };
 
-  new Chart(ctx, config);
+      const gradient = ctx.createLinearGradient(0, -2000, 0, 300);
+      gradient.addColorStop(0, "rgba(24, 131, 255, 1)");
+      gradient.addColorStop(1, "rgba(24, 131, 255, 0)");
+
+      // Config block
+      const config = {
+        type: "line",
+        data: {
+          datasets: [
+            {
+              fill: true,
+              backgroundColor: gradient,
+              borderWidth: 3,
+              borderColor: "#1883FF",
+              tension: 0.5,
+              radius: 0,
+              pointRadius: 0,
+              data: data,
+            },
+          ],
+        },
+        options: {
+          animation,
+          interaction: {
+            intersect: false,
+          },
+          plugins: {
+            legend: false,
+          },
+          scales: {
+            x: {
+              type: "time",
+              time: { unit: "day" },
+              grid: {
+                display: false, // Remove grid lines on the x-axis
+                drawBorder: false, // Remove left border
+              },
+              ticks: {
+                // autoSkip: true,
+                // maxRotation: 90,
+                // minRotation: 90,
+                // maxTicksLimit: 6,
+                // minTicksLimit: 20,
+                color: "#090909",
+                font: {
+                  size: 12,
+                },
+              },
+            },
+            y: {
+              ticks: {
+                color: "#9D9D9D",
+                font: {
+                  size: 14,
+                },
+              },
+              grid: {
+                display: false, // Remove grid lines on the y-axis
+                drawBorder: false, // Remove left border
+              },
+            },
+          },
+        },
+      };
+
+      new Chart(ctx, config);
+    },
+    error: function (xhr, status, error) {
+      console.error("Error:", error);
+      // Handle error
+    },
+  });
+
+  //Chart
 
   //Gsap | Digital revolution
   gsap.registerPlugin(ScrollTrigger);
@@ -564,7 +635,7 @@ $(() => {
 
   //Tabs block
   function openTab() {
-    var currentTab = $(this).data("tab");
+    const currentTab = $(this).data("tab");
 
     $(".tabcontent").removeClass("show");
     $(".tablinks").removeClass("active");

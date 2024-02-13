@@ -7,6 +7,12 @@
   border-radius: 50px;
   cursor: pointer;
   line-height: 140%;
+  display: inline-block;
+}
+.button.light {
+  background: var(--bg-white);
+  border: 1px solid var(--text-title-blue);
+  color: var(--text-title-blue);
 }
 
 .button.bordered {

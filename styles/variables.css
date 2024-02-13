@@ -5,6 +5,7 @@
   /* spacings */
   --spacing-305: 8.47rem; /* (305px) */
   --spacing-238: 6.61rem; /* (238px) */
+  --spacing-180: 5rem; /* (180px) */
   --spacing-160: 4.44rem; /* (160px) */
   --spacing-120: 3.33rem; /* (120px) */
   --spacing-116: 3.22rem; /* (116px) */
@@ -25,6 +26,7 @@
   --spacing-34: 0.94rem; /* (34px) */
   --spacing-32: 0.89rem; /* (32px) */
   --spacing-30: 0.83rem; /* (30px) */
+  --spacing-28: 0.77rem; /* (28px) */
   --spacing-27: 0.75rem; /* (27px) */
   --spacing-25: 0.69rem; /* (25px) */
   --spacing-24: 0.67rem; /* (24px) */
@@ -38,6 +40,7 @@
   --spacing-12: 0.33rem; /* (12px) */
   --spacing-10: 0.28rem; /* (10px) */
   --spacing-7: 0.19rem; /* (7px) */
+  --spacing-6: 0.16rem; /* (6px) */
   --spacing-5: 0.14rem; /* (5px) */
 
   /* font-sizes */
@@ -94,6 +97,7 @@
   --block-border-radius-small: 20px;
   --block-border-radius-xs: 18px;
   --block-border-radius-xxs: 15px;
+  --block-border-radius-xxxs: 12px;
 }
 
 @media (max-width: 480px) {
@@ -121,6 +125,7 @@
     --spacing-50: 50px; /* (50px) */
     --spacing-48: 48px; /* (48px) */
     --spacing-47: 47px; /* (47px) */
+    --spacing-42: 42px; /* (42px) */
     --spacing-40: 40px; /* (40px) */
     --spacing-38: 38px; /* (38px) */
     --spacing-36: 36px; /* (36px) */
