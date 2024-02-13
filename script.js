@@ -165,7 +165,7 @@ $(() => {
     } UTC`;
   };
 
-  // console.log(getTodayInFormat());
+  $("#todayDateInUTC").text(getTodayInFormat());
 
   //Chart
 
