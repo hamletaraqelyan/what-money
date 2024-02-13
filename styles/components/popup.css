@@ -5,6 +5,8 @@
 
 .submition-popup,
 .thank-you-popup {
+  max-width: unset;
+  width: 40%;
   display: none;
   padding: var(--spacing-60) var(--spacing-70);
   text-align: center;
@@ -109,16 +111,13 @@
 }
 
 @media (max-width: 480px) {
-  .modal {
-    width: 100%;
-  }
-
   .submition-popup {
     text-align: left;
   }
 
   .submition-popup,
   .thank-you-popup {
+    width: 100%;
     padding: var(--spacing-42) var(--spacing-20);
   }
 
