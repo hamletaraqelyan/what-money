@@ -186,6 +186,7 @@ $(() => {
       $("#inputWrapperSecond input").val(
         roundToTwoDecimals(rubToUsdt(1000, RUBtoUSD))
       );
+
       $("#moneyTo").text(addCommas(exchange("rub", "usdt", 100000, data)));
 
       $("#inputWrapperFirst input").on("input", function () {
@@ -195,7 +196,7 @@ $(() => {
         const secondInput = $("#inputWrapperSecond input");
         const secondName = secondInput.attr("name");
 
-        secondInput.val(exchange(name, secondName, val, data, true));
+        secondInput.val(exchange(name, secondName, val, data));
       });
 
       $("#inputWrapperSecond input").on("input", function () {
@@ -269,9 +270,7 @@ $(() => {
         const rightInputName = rightInput.attr("name");
 
         leftInput.val(1000);
-        rightInput.val(
-          exchange(leftInputName, rightInputName, 1000, data, true)
-        );
+        rightInput.val(exchange(leftInputName, rightInputName, 1000, data));
 
         parent.find(".currency-item.active").removeClass("active");
         $(this).addClass("active");
