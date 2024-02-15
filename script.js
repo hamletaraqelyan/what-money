@@ -56,7 +56,7 @@ $(() => {
     return rub / rate;
   };
 
-  const usdToUsdt = (number) => {
+  const usdToUsdt = (number, isGetting) => {
     if (typeof number !== "number") {
       throw new Error("Input must be a number");
     }
@@ -73,7 +73,9 @@ $(() => {
     const decreaseAmount = number * decreasePercentage;
 
     // Decrease the number
-    const result = number - decreaseAmount;
+    const result = isGetting
+      ? number + decreaseAmount
+      : number - decreaseAmount;
 
     return result;
   };
@@ -98,7 +100,7 @@ $(() => {
     return roundedNumber;
   }
 
-  const exchange = (from, to, value, rate, isGetting) => {
+  const exchange = (from, to, value, rate, isGetting, isSecondInput) => {
     if (from === to) {
       return value;
     }
@@ -120,13 +122,13 @@ $(() => {
         if (to === "rub") {
           return roundToTwoDecimals(usdToRub(value, decideRateType()));
         } else if (to === "usdt") {
-          return roundToTwoDecimals(usdToUsdt(value));
+          return roundToTwoDecimals(usdToUsdt(value, isSecondInput));
         }
       } else if (from === "usdt") {
         if (to === "rub") {
           return roundToTwoDecimals(usdtToRub(value, decideRateType()));
         } else if (to === "usd") {
-          return roundToTwoDecimals(usdToUsdt(value));
+          return roundToTwoDecimals(usdToUsdt(value, isSecondInput));
         }
       }
     }
@@ -207,7 +209,7 @@ $(() => {
         const firstInputName = firstInput.attr("name");
 
         firstInput.val(
-          exchange(name, firstInputName, val, data, name === "rub")
+          exchange(name, firstInputName, val, data, name === "rub", true)
         );
       });
 
