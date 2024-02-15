@@ -98,29 +98,36 @@ $(() => {
     return roundedNumber;
   }
 
-  const exchange = (from, to, value, rate) => {
+  const exchange = (from, to, value, rate, isGetting) => {
     if (from === to) {
       return value;
     }
+
+    const decideRateType = () => {
+      if (isGetting) {
+        return rate.usdToRub;
+      }
+      return rate.rubToUsd;
+    };
 
     if (value === 0) {
       return "";
     } else {
       if (from === "rub") {
         if (to === "usd") {
-          return roundToTwoDecimals(rubToUsd(value, rate.rubToUsd));
+          return roundToTwoDecimals(rubToUsd(value, decideRateType()));
         } else if (to === "usdt") {
-          return roundToTwoDecimals(rubToUsdt(value, rate.rubToUsd));
+          return roundToTwoDecimals(rubToUsdt(value, decideRateType()));
         }
       } else if (from === "usd") {
         if (to === "rub") {
-          return roundToTwoDecimals(usdToRub(value, rate.usdToRub));
+          return roundToTwoDecimals(usdToRub(value, decideRateType()));
         } else if (to === "usdt") {
           return roundToTwoDecimals(usdToUsdt(value));
         }
       } else if (from === "usdt") {
         if (to === "rub") {
-          return roundToTwoDecimals(usdtToRub(value, rate.usdToRub));
+          return roundToTwoDecimals(usdtToRub(value, decideRateType()));
         } else if (to === "usd") {
           return roundToTwoDecimals(usdToUsdt(value));
         }
@@ -191,7 +198,7 @@ $(() => {
         const secondInput = $("#inputWrapperSecond input");
         const secondName = secondInput.attr("name");
 
-        secondInput.val(exchange(name, secondName, val, data));
+        secondInput.val(exchange(name, secondName, val, data, true));
       });
 
       $("#inputWrapperSecond input").on("input", function () {
@@ -224,7 +231,7 @@ $(() => {
         //first input content update
         updateInput(
           secondInput,
-          exchange(secondInpName, firstInpName, secondInpValue, data),
+          exchange(secondInpName, firstInpName, secondInpValue, data, true),
           firstInpName
         );
         firstWrapper.appendTo("#exchangeWrapperSecond");
@@ -265,7 +272,9 @@ $(() => {
         const rightInputName = rightInput.attr("name");
 
         leftInput.val(1000);
-        rightInput.val(exchange(leftInputName, rightInputName, 1000, data));
+        rightInput.val(
+          exchange(leftInputName, rightInputName, 1000, data, true)
+        );
 
         parent.find(".currency-item.active").removeClass("active");
         $(this).addClass("active");
