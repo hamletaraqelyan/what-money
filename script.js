@@ -272,7 +272,9 @@ $(() => {
         const rightInputName = rightInput.attr("name");
 
         leftInput.val(1000);
-        rightInput.val(exchange(leftInputName, rightInputName, 1000, data));
+        rightInput.val(
+          exchange(leftInputName, rightInputName, 1000, data, name === "rub")
+        );
 
         parent.find(".currency-item.active").removeClass("active");
         $(this).addClass("active");
