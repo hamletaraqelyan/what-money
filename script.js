@@ -100,11 +100,11 @@ $(() => {
 
   const rubToUsdt = (rub, rate, exchangeType) => {
     const usd = rubToUsd(rub, rate, exchangeType);
-    return usdToUsdt(usd);
+    return usdToUsdt(usd, exchangeType);
   };
 
   const usdtToRub = (usdt, rate, exchangeType) => {
-    const USD = usdtToUsd(usdt);
+    const USD = usdtToUsd(usdt, exchangeType);
     return usdToRub(USD, rate, exchangeType);
   };
 
