@@ -67,7 +67,7 @@ $(() => {
 
     let decreasePercentage;
 
-    if (number <= 5000) {
+    if (number < 5000) {
       decreasePercentage = 0.05; // 5%
     } else {
       decreasePercentage = 0.03; // 3%
@@ -86,7 +86,7 @@ $(() => {
 
     let decreasePercentage;
 
-    if (number <= 5000) {
+    if (number < 5000) {
       decreasePercentage = 0.05; // 5%
     } else {
       decreasePercentage = 0.03; // 3%
@@ -100,12 +100,14 @@ $(() => {
 
   const rubToUsdt = (rub, rate, exchangeType) => {
     const usd = rubToUsd(rub, rate, exchangeType);
-    return usdToUsdt(usd, exchangeType);
+    return usd;
+    // return usdToUsdt(usd, exchangeType);
   };
 
   const usdtToRub = (usdt, rate, exchangeType) => {
-    const USD = usdtToUsd(usdt, exchangeType);
-    return usdToRub(USD, rate, exchangeType);
+    // const USD = usdtToUsd(usdt, exchangeType);
+    return usdToRub(usdt, rate, exchangeType);
+    // return usdToRub(USD, rate, exchangeType);
   };
 
   function roundToTwoDecimals(inputNumber) {
