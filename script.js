@@ -104,10 +104,7 @@ $(() => {
     }
 
     const decideRateType = () => {
-      if (isGetting) {
-        return rate.usdToRub;
-      }
-      return rate.rubToUsd;
+      return isGetting ? rate.usdToRub : rate.rubToUsd;
     };
 
     if (value === 0) {
