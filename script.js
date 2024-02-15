@@ -196,7 +196,7 @@ $(() => {
         const secondInput = $("#inputWrapperSecond input");
         const secondName = secondInput.attr("name");
 
-        secondInput.val(exchange(name, secondName, val, data));
+        secondInput.val(exchange(name, secondName, val, data, name === "usd"));
       });
 
       $("#inputWrapperSecond input").on("input", function () {
@@ -206,7 +206,9 @@ $(() => {
         const firstInput = $("#inputWrapperFirst input");
         const firstInputName = firstInput.attr("name");
 
-        firstInput.val(exchange(name, firstInputName, val, data));
+        firstInput.val(
+          exchange(name, firstInputName, val, data, name === "rub")
+        );
       });
 
       $("#switch-currencies").on("click", () => {
