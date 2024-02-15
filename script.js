@@ -48,15 +48,19 @@ $(() => {
   }
 
   //   Currency rate
-  const usdToRub = (usd, rate) => {
-    return usd * rate;
+  const usdToRub = (usd, rate, exchangeType) => {
+    let decidedRate =
+      exchangeType === "receive" ? rate.rubToUsd : rate.usdToRub;
+    return usd * decidedRate;
   };
 
-  const rubToUsd = (rub, rate) => {
-    return rub / rate;
+  const rubToUsd = (rub, rate, exchangeType) => {
+    let decidedRate =
+      exchangeType === "receive" ? rate.usdToRub : rate.rubToUsd;
+    return rub / decidedRate;
   };
 
-  const usdToUsdt = (number, isGetting) => {
+  const usdToUsdt = (number, exchangeType) => {
     if (typeof number !== "number") {
       throw new Error("Input must be a number");
     }
@@ -69,25 +73,39 @@ $(() => {
       decreasePercentage = 0.03; // 3%
     }
 
-    // Calculate the decrease amount based on the percentage
-    const decreaseAmount = number * decreasePercentage;
-
-    // Decrease the number
-    const result = isGetting
-      ? number + decreaseAmount
-      : number - decreaseAmount;
-
-    return result;
+    if (exchangeType === "receive") {
+      return number / (1 - decreasePercentage);
+    }
+    return number - number * decreasePercentage;
   };
 
-  const rubToUsdt = (rub, rate) => {
-    const usd = rubToUsd(rub, rate);
+  const usdtToUsd = (number, exchangeType) => {
+    if (typeof number !== "number") {
+      throw new Error("Input must be a number");
+    }
+
+    let decreasePercentage;
+
+    if (number <= 5000) {
+      decreasePercentage = 0.05; // 5%
+    } else {
+      decreasePercentage = 0.03; // 3%
+    }
+
+    if (exchangeType === "receive") {
+      return number / (1 - decreasePercentage);
+    }
+    return number - number * decreasePercentage;
+  };
+
+  const rubToUsdt = (rub, rate, exchangeType) => {
+    const usd = rubToUsd(rub, rate, exchangeType);
     return usdToUsdt(usd);
   };
 
-  const usdtToRub = (usdt, rate) => {
-    const USD = usdToUsdt(usdt);
-    return usdToRub(USD, rate);
+  const usdtToRub = (usdt, rate, exchangeType) => {
+    const USD = usdtToUsd(usdt);
+    return usdToRub(USD, rate, exchangeType);
   };
 
   function roundToTwoDecimals(inputNumber) {
@@ -100,35 +118,31 @@ $(() => {
     return roundedNumber;
   }
 
-  const exchange = (from, to, value, rate, isGetting, isSecondInput) => {
+  const exchange = (from, to, value, rate, exchangeType) => {
     if (from === to) {
       return value;
     }
-
-    const decideRateType = () => {
-      return isGetting ? rate.usdToRub : rate.rubToUsd;
-    };
 
     if (value === 0) {
       return "";
     } else {
       if (from === "rub") {
         if (to === "usd") {
-          return roundToTwoDecimals(rubToUsd(value, decideRateType()));
+          return roundToTwoDecimals(rubToUsd(value, rate, exchangeType));
         } else if (to === "usdt") {
-          return roundToTwoDecimals(rubToUsdt(value, decideRateType()));
+          return roundToTwoDecimals(rubToUsdt(value, rate, exchangeType));
         }
       } else if (from === "usd") {
         if (to === "rub") {
-          return roundToTwoDecimals(usdToRub(value, decideRateType()));
+          return roundToTwoDecimals(usdToRub(value, rate, exchangeType));
         } else if (to === "usdt") {
-          return roundToTwoDecimals(usdToUsdt(value, isSecondInput));
+          return roundToTwoDecimals(usdToUsdt(value, exchangeType));
         }
       } else if (from === "usdt") {
         if (to === "rub") {
-          return roundToTwoDecimals(usdtToRub(value, decideRateType()));
+          return roundToTwoDecimals(usdtToRub(value, rate, exchangeType));
         } else if (to === "usd") {
-          return roundToTwoDecimals(usdToUsdt(value, isSecondInput));
+          return roundToTwoDecimals(usdtToUsd(value, exchangeType));
         }
       }
     }
@@ -183,10 +197,8 @@ $(() => {
       return response.json();
     })
     .then((data) => {
-      const RUBtoUSD = data.rubToUsd;
-
       $("#inputWrapperSecond input").val(
-        roundToTwoDecimals(rubToUsdt(1000, RUBtoUSD))
+        roundToTwoDecimals(rubToUsdt(1000, data, "send"))
       );
 
       $("#moneyTo").text(addCommas(exchange("rub", "usdt", 100000, data)));
@@ -198,7 +210,7 @@ $(() => {
         const secondInput = $("#inputWrapperSecond input");
         const secondName = secondInput.attr("name");
 
-        secondInput.val(exchange(name, secondName, val, data, name === "usd"));
+        secondInput.val(exchange(name, secondName, val, data, "send"));
       });
 
       $("#inputWrapperSecond input").on("input", function () {
@@ -208,9 +220,7 @@ $(() => {
         const firstInput = $("#inputWrapperFirst input");
         const firstInputName = firstInput.attr("name");
 
-        firstInput.val(
-          exchange(name, firstInputName, val, data, name === "rub", true)
-        );
+        firstInput.val(exchange(name, firstInputName, val, data, "receive"));
       });
 
       $("#switch-currencies").on("click", () => {
@@ -233,7 +243,7 @@ $(() => {
         //first input content update
         updateInput(
           secondInput,
-          exchange(secondInpName, firstInpName, secondInpValue, data, true),
+          exchange(secondInpName, firstInpName, secondInpValue, data),
           firstInpName
         );
         firstWrapper.appendTo("#exchangeWrapperSecond");
@@ -275,7 +285,7 @@ $(() => {
 
         leftInput.val(1000);
         rightInput.val(
-          exchange(leftInputName, rightInputName, 1000, data, name === "rub")
+          exchange(leftInputName, rightInputName, 1000, data, "send")
         );
 
         parent.find(".currency-item.active").removeClass("active");
