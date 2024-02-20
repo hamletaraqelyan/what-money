@@ -342,14 +342,20 @@ $(() => {
       : roundToTwoDecimals(currencyList.list[to].to[from](value, type, rates));
   };
 
-  function roundToTwoDecimals(inputNumber, fixedNumber = 4) {
-    if (inputNumber === 0) {
-      return 0;
+  function roundToTwoDecimals(number) {
+    var strNumber = number.toString();
+
+    if (strNumber.includes(".")) {
+      var decimalPart = strNumber.split(".")[1];
+
+      var decimalPlaces = Math.min(Math.max(2, decimalPart.length), 4);
+
+      return parseFloat(number)
+        .toFixed(decimalPlaces)
+        .replace(/\.?0*$/, "");
+    } else {
+      return number;
     }
-
-    const roundedNumber = inputNumber.toFixed(fixedNumber);
-
-    return roundedNumber;
   }
 
   $(".currency-wrapper").on("click", (e) => {
@@ -398,8 +404,7 @@ $(() => {
       $("#moneyTo").text(
         addCommas(
           roundToTwoDecimals(
-            currencyList.list.rub.to.usdt(100000, "from", fetchRates),
-            2
+            currencyList.list.rub.to.usdt(100000, "from", fetchRates)
           )
         )
       );
@@ -411,14 +416,31 @@ $(() => {
         )
       );
 
-      $("#inputWrapperFirst input").on("input", function () {
+      const firstInput = $("#inputWrapperFirst input");
+      const secondInput = $("#inputWrapperSecond input");
+
+      firstInput.on("input", function () {
         const val = +$(this).val();
         setSecondInputValue(doExchange(val, "from", fetchRates));
       });
 
-      $("#inputWrapperSecond input").on("input", function () {
+      secondInput.on("input", function () {
         const val = +$(this).val();
         setFirstInputValue(doExchange(val, "to", fetchRates));
+      });
+
+      firstInput.on("blur", function () {
+        if (+$(this).val() === 0 || $(this).val() === "") {
+          setInputHtml();
+          setSecondInputValue(doExchange(1000, "from", fetchRates));
+        }
+      });
+
+      secondInput.on("blur", function () {
+        if (+$(this).val() === 0 || $(this).val() === "") {
+          setInputHtml();
+          setSecondInputValue(doExchange(1000, "from", fetchRates));
+        }
       });
 
       $("#switch-currencies").on("click", () => {
@@ -476,12 +498,14 @@ $(() => {
         $("#moneyTo").text(
           addCommas(
             roundToTwoDecimals(
-              currencyList.list.rub.to.usdt(value, "from", fetchRates),
-              2
+              currencyList.list.rub.to.usdt(value, "from", fetchRates)
             )
           )
         );
       });
+
+      firstInput.removeAttr("placeholder");
+      secondInput.removeAttr("placeholder");
     })
     .catch((error) => {
       console.error("There was a problem with the fetch operation:", error);
