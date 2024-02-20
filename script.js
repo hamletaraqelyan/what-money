@@ -342,20 +342,13 @@ $(() => {
       : roundToTwoDecimals(currencyList.list[to].to[from](value, type, rates));
   };
 
-  function roundToTwoDecimals(number) {
-    var strNumber = number.toString();
-
-    if (strNumber.includes(".")) {
-      var decimalPart = strNumber.split(".")[1];
-
-      var decimalPlaces = Math.min(Math.max(2, decimalPart.length), 4);
-
-      return parseFloat(number)
-        .toFixed(decimalPlaces)
-        .replace(/\.?0*$/, "");
-    } else {
-      return number;
+  function roundToTwoDecimals(inputNumber) {
+    if (inputNumber === 0) {
+      return 0;
     }
+
+    const roundedNumber = inputNumber.toFixed(2);
+    return roundedNumber;
   }
 
   $(".currency-wrapper").on("click", (e) => {
