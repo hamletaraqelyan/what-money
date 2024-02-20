@@ -92,13 +92,17 @@
 
 .exchange .exchange-card .inputWrapper input {
   color: var(--text-title-black);
-  font-size: var(--font-size-52);
+  font-size: var(--font-size-40);
   font-weight: 500;
   line-height: 106%;
   letter-spacing: -1px;
   border-bottom: 1px solid var(--bg-seperator);
   padding-bottom: var(--spacing-5);
   border-radius: 0;
+}
+
+.exchange .exchange-card .inputWrapper input::placeholder {
+  font-size: var(--font-size-34);
 }
 
 .exchange .exchange-card .currency-wrapper {
@@ -1081,8 +1085,12 @@
   }
 
   .exchange .exchange-card .inputWrapper input {
-    font-size: var(--font-size-28);
+    font-size: var(--font-size-22);
     letter-spacing: -1px;
+  }
+
+  .exchange .exchange-card .inputWrapper input::placeholder {
+    font-size: var(--font-size-18);
   }
 
   .exchange .exchange-card .currency-wrapper .currency-name {

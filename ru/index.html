@@ -114,67 +114,10 @@
           <div class="exchange-card" id="exchangeWrapperFirst">
             <div class="inputWrapper" id="inputWrapperFirst">
               <label for="rub">Вы Отправляете</label>
-              <input type="number" name="rub" value="1000" />
+              <input type="number" placeholder="Обменивается..." />
             </div>
-            <div class="currency-wrapper">
-              <img
-                class="currency-image"
-                src="../public/media/icons/russia-flag.svg"
-                alt="russia flag"
-              />
-              <p class="currency-name">RUB</p>
-              <img
-                class="chevron"
-                src="../public/media/icons/chevron-down.svg"
-                alt="chevron down"
-              />
-            </div>
-            <div class="currency-switch">
-              <div
-                data-name="usdt"
-                data-type="from"
-                data-image="../public/media/icons/usdt.svg"
-                class="currency-item desibled"
-              >
-                <img
-                  class="currency-image"
-                  src="../public/media/icons/usdt.svg"
-                  alt="russia flag"
-                />
-                <p class="currency-name">USDT</p>
-                <span class="currency-name-long">Tether</span>
-              </div>
-
-              <div
-                data-name="usd"
-                data-type="from"
-                data-image="../public/media/icons/usa.png"
-                class="currency-item"
-              >
-                <img
-                  class="currency-image"
-                  src="../public/media/icons/usa.png"
-                  alt="russia flag"
-                />
-                <p class="currency-name">USD</p>
-                <span class="currency-name-long">US Dollar</span>
-              </div>
-
-              <div
-                data-name="rub"
-                data-type="from"
-                data-image="../public/media/icons/russia-flag.svg"
-                class="currency-item active"
-              >
-                <img
-                  class="currency-image"
-                  src="../public/media/icons/russia-flag.svg"
-                  alt="russia flag"
-                />
-                <p class="currency-name">RUB</p>
-                <span class="currency-name-long">Russian Ruble</span>
-              </div>
-            </div>
+            <div class="currency-wrapper"></div>
+            <div class="currency-switch"></div>
           </div>
           <button class="exchange-button" id="switch-currencies">
             <img src="../public/media/icons/arrow-swap.svg" alt="arrow swap" />
@@ -182,67 +125,10 @@
           <div class="exchange-card" id="exchangeWrapperSecond">
             <div class="inputWrapper" id="inputWrapperSecond">
               <label for="usdt">Вы Получаете</label>
-              <input type="number" name="usdt" />
+              <input type="number" placeholder="Обменивается..." />
             </div>
-            <div class="currency-wrapper">
-              <img
-                class="currency-image"
-                src="../public/media/icons/usdt.svg"
-                alt="usdt crypto"
-              />
-              <p class="currency-name">USDT</p>
-              <img
-                class="chevron"
-                src="../public/media/icons/chevron-down.svg"
-                alt="chevron down"
-              />
-            </div>
-            <div class="currency-switch">
-              <div
-                data-name="usdt"
-                data-type="to"
-                data-image="../public/media/icons/usdt.svg"
-                class="currency-item active"
-              >
-                <img
-                  class="currency-image"
-                  src="../public/media/icons/usdt.svg"
-                  alt="russia flag"
-                />
-                <p class="currency-name">USDT</p>
-                <span class="currency-name-long">Tether</span>
-              </div>
-
-              <div
-                data-name="usd"
-                data-type="to"
-                data-image="../public/media/icons/usa.png"
-                class="currency-item"
-              >
-                <img
-                  class="currency-image"
-                  src="../public/media/icons/usa.png"
-                  alt="russia flag"
-                />
-                <p class="currency-name">USD</p>
-                <span class="currency-name-long">US Dollar</span>
-              </div>
-
-              <div
-                data-name="rub"
-                data-type="to"
-                data-image="../public/media/icons/russia-flag.svg"
-                class="currency-item desibled"
-              >
-                <img
-                  class="currency-image"
-                  src="../public/media/icons/russia-flag.svg"
-                  alt="russia flag"
-                />
-                <p class="currency-name">RUB</p>
-                <span class="currency-name-long">Russian Ruble</span>
-              </div>
-            </div>
+            <div class="currency-wrapper"></div>
+            <div class="currency-switch"></div>
           </div>
         </div>
       </section>
@@ -511,7 +397,7 @@
           </h4>
           <div class="graph-block">
             <div class="curr-rate">
-              <h5>1 RUB = 0.1178 USD</h5>
+              <h5 id="oneRubToUsd">1 RUB = <span id="usdValue">0.1178</span> USD</h5>
               <p id="todayDateInUTC">Feb 2, 2024, 13:51 UTC</p>
             </div>
             <canvas style="height: 5.56rem" id="myChart"></canvas>

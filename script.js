@@ -48,112 +48,309 @@ $(() => {
   }
 
   //   Currency rate
-  const usdToRub = (usd, rate, exchangeType) => {
-    let decidedRate =
-      exchangeType === "receive" ? rate.rubToUsd : rate.usdToRub;
-    return usd * decidedRate;
+  const getExchangeRate = (from, to, rate, type) => {
+    if (type === "to") {
+      return rate[`${to}_${from}`];
+    }
+    return rate[`${from}_${to}`];
   };
 
-  const rubToUsd = (rub, rate, exchangeType) => {
-    let decidedRate =
-      exchangeType === "receive" ? rate.usdToRub : rate.rubToUsd;
-    return rub / decidedRate;
+  let PUBLIC_URL = "./";
+  const url = window.location.href;
+  if (url.indexOf("ru") !== -1) {
+    PUBLIC_URL = "../";
+  }
+
+  const currencyList = {
+    selectedFrom: "rub",
+    selectedTo: "usdt",
+    list: {
+      usd: {
+        img: `${PUBLIC_URL}public/media/icons/currency/usd.svg`,
+        name: "usd",
+        title: "USD",
+        longTitle: "US Dollar",
+        notExchange: ["usd", "btc", "eth"],
+        to: {
+          rub: (value, type, rate) =>
+            value * getExchangeRate("usdt", "rub", rate, type),
+          usdt: (value, type) => {
+            let decreasePercentage;
+
+            if (value < 5000) {
+              decreasePercentage = 0.05; // 5%
+            } else {
+              decreasePercentage = 0.03; // 3%
+            }
+
+            if (type === "to") {
+              return value / (1 - decreasePercentage);
+            }
+            return value - value * decreasePercentage;
+          },
+          uah: (value, type, rate) =>
+            value * getExchangeRate("usdt", "uah", rate, type),
+          kzt: (value, type, rate) =>
+            value * getExchangeRate("usdt", "kzt", rate, type),
+          byn: (value, type, rate) =>
+            value * getExchangeRate("usdt", "byn", rate, type),
+        },
+      },
+      rub: {
+        img: `${PUBLIC_URL}public/media/icons/currency/rub.svg`,
+        name: "rub",
+        title: "RUB",
+        longTitle: "Russian Ruble",
+        notExchange: ["rub", "uah", "kzt", "byn"],
+        to: {
+          usd: (value, type, rate) =>
+            value / getExchangeRate("rub", "usdt", rate, type),
+          usdt: (value, type, rate) =>
+            value / getExchangeRate("rub", "usdt", rate, type),
+          btc: (value, type, rate) =>
+            value / getExchangeRate("rub", "btc", rate, type),
+          eth: (value, type, rate) =>
+            value / getExchangeRate("rub", "eth", rate, type),
+        },
+      },
+      usdt: {
+        img: `${PUBLIC_URL}public/media/icons/currency/usdt.svg`,
+        name: "usdt",
+        title: "USDT",
+        longTitle: "Tether",
+        notExchange: ["usdt", "btc", "eth"],
+        to: {
+          rub: (value, type, rate) =>
+            value * getExchangeRate("usdt", "rub", rate, type),
+          usd: (value, type) => {
+            let decreasePercentage;
+
+            if (value < 5000) {
+              decreasePercentage = 0.05; // 5%
+            } else {
+              decreasePercentage = 0.03; // 3%
+            }
+
+            if (type === "to") {
+              return value / (1 - decreasePercentage);
+            }
+            return value - value * decreasePercentage;
+          },
+          uah: (value, type, rate) =>
+            value * getExchangeRate("usdt", "uah", rate, type),
+          kzt: (value, type, rate) =>
+            value * getExchangeRate("usdt", "kzt", rate, type),
+          byn: (value, type, rate) =>
+            value * getExchangeRate("usdt", "byn", rate, type),
+        },
+      },
+      btc: {
+        img: `${PUBLIC_URL}public/media/icons/currency/btc.svg`,
+        name: "btc",
+        title: "BTC",
+        longTitle: "Bitcoin",
+        notExchange: ["btc", "usd", "usdt", "eth"],
+        to: {
+          rub: (value, type, rate) =>
+            value * getExchangeRate("btc", "rub", rate, type),
+          uah: (value, type, rate) =>
+            value * getExchangeRate("btc", "uah", rate, type),
+          kzt: (value, type, rate) =>
+            value * getExchangeRate("btc", "kzt", rate, type),
+          byn: (value, type, rate) =>
+            value * getExchangeRate("btc", "byn", rate, type),
+        },
+      },
+      eth: {
+        img: `${PUBLIC_URL}public/media/icons/currency/eth.svg`,
+        name: "eth",
+        title: "ETH",
+        longTitle: "Ethereum",
+        notExchange: ["btc", "usd", "usdt", "eth"],
+        to: {
+          rub: (value, type, rate) =>
+            value * getExchangeRate("eth", "rub", rate, type),
+          uah: (value, type, rate) =>
+            value * getExchangeRate("eth", "uah", rate, type),
+          kzt: (value, type, rate) =>
+            value * getExchangeRate("eth", "kzt", rate, type),
+          byn: (value, type, rate) =>
+            value * getExchangeRate("eth", "byn", rate, type),
+        },
+      },
+      uah: {
+        img: `${PUBLIC_URL}public/media/icons/currency/uah.svg`,
+        name: "uah",
+        title: "UAH",
+        longTitle: "Ukrainian Hryvnia",
+        notExchange: ["rub", "uah", "kzt", "byn"],
+        to: {
+          usd: (value, type, rate) =>
+            value / getExchangeRate("uah", "usdt", rate, type),
+          usdt: (value, type, rate) =>
+            value / getExchangeRate("uah", "usdt", rate, type),
+          btc: (value, type, rate) =>
+            value / getExchangeRate("uah", "btc", rate, type),
+          eth: (value, type, rate) =>
+            value / getExchangeRate("uah", "eth", rate, type),
+        },
+      },
+      kzt: {
+        img: `${PUBLIC_URL}public/media/icons/currency/kzt.svg`,
+        name: "kzt",
+        title: "KZT",
+        longTitle: "Kazakhstani Tenge",
+        notExchange: ["rub", "uah", "kzt", "byn"],
+        to: {
+          usd: (value, type, rate) =>
+            value / getExchangeRate("kzt", "usdt", rate, type),
+          usdt: (value, type, rate) =>
+            value / getExchangeRate("kzt", "usdt", rate, type),
+          btc: (value, type, rate) =>
+            value / getExchangeRate("kzt", "btc", rate, type),
+          eth: (value, type, rate) =>
+            value / getExchangeRate("kzt", "eth", rate, type),
+        },
+      },
+      byn: {
+        img: `${PUBLIC_URL}public/media/icons/currency/byn.svg`,
+        name: "byn",
+        title: "BYN",
+        longTitle: "Belarusian Ruble",
+        notExchange: ["rub", "uah", "kzt", "byn"],
+        to: {
+          usd: (value, type, rate) =>
+            value / getExchangeRate("byn", "usdt", rate, type),
+          usdt: (value, type, rate) =>
+            value / getExchangeRate("byn", "usdt", rate, type),
+          btc: (value, type, rate) =>
+            value / getExchangeRate("byn", "btc", rate, type),
+          eth: (value, type, rate) =>
+            value / getExchangeRate("byn", "eth", rate, type),
+        },
+      },
+    },
   };
 
-  const usdToUsdt = (number, exchangeType) => {
-    if (typeof number !== "number") {
-      throw new Error("Input must be a number");
-    }
-
-    let decreasePercentage;
-
-    if (number < 5000) {
-      decreasePercentage = 0.05; // 5%
-    } else {
-      decreasePercentage = 0.03; // 3%
-    }
-
-    if (exchangeType === "receive") {
-      return number / (1 - decreasePercentage);
-    }
-    return number - number * decreasePercentage;
+  const generateDropdownItem = (currencyItem, type, active) => {
+    return `<div
+              data-name="${currencyItem.name}"
+              data-type="${type}"
+              data-image="${currencyItem.img}"
+              class="currency-item ${active ? "active" : ""}"
+            >
+              <img
+                class="currency-image"
+                src="${currencyItem.img}"
+                alt="${currencyItem.longTitle}"
+              />
+              <p class="currency-name">${currencyItem.title}</p>
+              <span class="currency-name-long">${currencyItem.longTitle}</span>
+            </div>`;
   };
 
-  const usdtToUsd = (number, exchangeType) => {
-    if (typeof number !== "number") {
-      throw new Error("Input must be a number");
-    }
-
-    let decreasePercentage;
-
-    if (number < 5000) {
-      decreasePercentage = 0.05; // 5%
-    } else {
-      decreasePercentage = 0.03; // 3%
-    }
-
-    if (exchangeType === "receive") {
-      return number / (1 - decreasePercentage);
-    }
-    return number - number * decreasePercentage;
+  const generateCurrencyWrapperItem = (currencyItem) => {
+    return `<img
+              class="currency-image"
+              src="${currencyItem.img}"
+              alt="${currencyItem.longTitle}"
+            />
+            <p class="currency-name">${currencyItem.title}</p>
+            <img
+              class="chevron"
+              src="${PUBLIC_URL}public/media/icons/chevron-down.svg"
+              alt="chevron down"
+            />`;
   };
 
-  const rubToUsdt = (rub, rate, exchangeType) => {
-    const usd = rubToUsd(rub, rate, exchangeType);
-    return usd;
-    // return usdToUsdt(usd, exchangeType);
+  const setDropdownListHTML = () => {
+    let leftDropdownListHTML = "";
+    let rightDropdownListHTML = "";
+    const fromItem = currencyList.list[currencyList.selectedFrom];
+    const toItem = currencyList.list[currencyList.selectedTo];
+    const fromNotExange = fromItem.notExchange;
+    const toNotExange = toItem.notExchange;
+
+    for (const currencyKey in currencyList.list) {
+      if (Object.hasOwnProperty.call(currencyList.list, currencyKey)) {
+        const currencyItem = currencyList.list[currencyKey];
+
+        leftDropdownListHTML += !toNotExange.includes(currencyItem.name)
+          ? generateDropdownItem(
+              currencyItem,
+              "from",
+              currencyList.selectedFrom === currencyItem.name
+            )
+          : "";
+
+        rightDropdownListHTML += !fromNotExange.includes(currencyItem.name)
+          ? generateDropdownItem(
+              currencyItem,
+              "to",
+              currencyList.selectedTo === currencyItem.name
+            )
+          : "";
+      }
+    }
+
+    $("#exchangeWrapperFirst .currency-wrapper").html(
+      generateCurrencyWrapperItem(fromItem)
+    );
+    $("#exchangeWrapperSecond .currency-wrapper").html(
+      generateCurrencyWrapperItem(toItem)
+    );
+
+    $("#exchangeWrapperFirst .currency-switch").html(leftDropdownListHTML);
+    $("#exchangeWrapperSecond .currency-switch").html(rightDropdownListHTML);
   };
 
-  const usdtToRub = (usdt, rate, exchangeType) => {
-    // const USD = usdtToUsd(usdt, exchangeType);
-    return usdToRub(usdt, rate, exchangeType);
-    // return usdToRub(USD, rate, exchangeType);
+  const setInputHtml = (leftInputValue = 1000, rightInputValue = "") => {
+    let leftInputHTML = $("#inputWrapperFirst input");
+    let rightInputHTML = $("#inputWrapperSecond input");
+
+    const leftInputName = currencyList.list[currencyList.selectedFrom].name;
+    const rightInputName = currencyList.list[currencyList.selectedTo].name;
+
+    leftInputHTML.attr("name", leftInputName);
+    leftInputHTML.val(leftInputValue);
+
+    rightInputHTML.attr("name", rightInputName);
+    rightInputHTML.val(rightInputValue);
   };
 
-  function roundToTwoDecimals(inputNumber) {
+  const setFirstInputValue = (value) => {
+    $("#inputWrapperFirst input").val(value);
+  };
+
+  const setSecondInputValue = (value) => {
+    $("#inputWrapperSecond input").val(value);
+  };
+
+  setInputHtml();
+  setDropdownListHTML();
+
+  const doExchange = (value, type = "from", rates) => {
+    if (value === 0) {
+      return "";
+    }
+
+    const from = currencyList.selectedFrom;
+    const to = currencyList.selectedTo;
+
+    return type === "from"
+      ? roundToTwoDecimals(currencyList.list[from].to[to](value, type, rates))
+      : roundToTwoDecimals(currencyList.list[to].to[from](value, type, rates));
+  };
+
+  function roundToTwoDecimals(inputNumber, fixedNumber = 4) {
     if (inputNumber === 0) {
       return 0;
     }
-    // Round the input number to two decimal places
-    const roundedNumber = inputNumber.toFixed(2);
+
+    const roundedNumber = inputNumber.toFixed(fixedNumber);
 
     return roundedNumber;
   }
-
-  const exchange = (from, to, value, rate, exchangeType) => {
-    if (from === to) {
-      return value;
-    }
-
-    if (value === 0) {
-      return "";
-    } else {
-      if (from === "rub") {
-        if (to === "usd") {
-          return roundToTwoDecimals(rubToUsd(value, rate, exchangeType));
-        } else if (to === "usdt") {
-          return roundToTwoDecimals(rubToUsdt(value, rate, exchangeType));
-        }
-      } else if (from === "usd") {
-        if (to === "rub") {
-          return roundToTwoDecimals(usdToRub(value, rate, exchangeType));
-        } else if (to === "usdt") {
-          return roundToTwoDecimals(usdToUsdt(value, exchangeType));
-        }
-      } else if (from === "usdt") {
-        if (to === "rub") {
-          return roundToTwoDecimals(usdtToRub(value, rate, exchangeType));
-        } else if (to === "usd") {
-          return roundToTwoDecimals(usdtToUsd(value, exchangeType));
-        }
-      }
-    }
-  };
-
-  const updateInput = (input, newValue, newName) => {
-    $(input).attr("name", newName);
-    $(input).val(newValue);
-  };
 
   $(".currency-wrapper").on("click", (e) => {
     e.stopPropagation();
@@ -189,109 +386,69 @@ $(() => {
 
   $("#todayDateInUTC").text(getTodayInFormat());
 
-  //Chart
-
-  fetch("https://whatmoneyapi.azurewebsites.net/rb")
+  fetch("https://whatmoneyapi.azurewebsites.net/currencies")
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
       return response.json();
     })
-    .then((data) => {
-      $("#inputWrapperSecond input").val(
-        roundToTwoDecimals(rubToUsdt(1000, data, "send"))
+    .then((fetchRates) => {
+      setSecondInputValue(doExchange(1000, "from", fetchRates));
+      $("#moneyTo").text(
+        addCommas(
+          roundToTwoDecimals(
+            currencyList.list.rub.to.usdt(100000, "from", fetchRates),
+            2
+          )
+        )
       );
-
-      $("#moneyTo").text(addCommas(exchange("rub", "usdt", 100000, data)));
+      $("#oneRubToUsd #usdValue").text(
+        addCommas(
+          roundToTwoDecimals(
+            currencyList.list.rub.to.usdt(1, "from", fetchRates)
+          )
+        )
+      );
 
       $("#inputWrapperFirst input").on("input", function () {
         const val = +$(this).val();
-        const name = $(this).attr("name");
-
-        const secondInput = $("#inputWrapperSecond input");
-        const secondName = secondInput.attr("name");
-
-        secondInput.val(exchange(name, secondName, val, data, "send"));
+        setSecondInputValue(doExchange(val, "from", fetchRates));
       });
 
       $("#inputWrapperSecond input").on("input", function () {
         const val = +$(this).val();
-        const name = $(this).attr("name");
-
-        const firstInput = $("#inputWrapperFirst input");
-        const firstInputName = firstInput.attr("name");
-
-        firstInput.val(exchange(name, firstInputName, val, data, "receive"));
+        setFirstInputValue(doExchange(val, "to", fetchRates));
       });
 
       $("#switch-currencies").on("click", () => {
-        const firstWrapper = $("#exchangeWrapperFirst .currency-wrapper");
-        const firstWrapperDropdown = $(
-          "#exchangeWrapperFirst .currency-switch"
-        );
-        const firstInput = $("#inputWrapperFirst input");
-        const firstInpValue = +firstInput.val();
-        const firstInpName = firstInput.attr("name");
+        const temp = currencyList.selectedFrom;
+        currencyList.selectedFrom = currencyList.selectedTo;
+        currencyList.selectedTo = temp;
 
-        const secondWrapper = $("#exchangeWrapperSecond .currency-wrapper");
-        const secondWrapperDropdown = $(
-          "#exchangeWrapperSecond .currency-switch"
-        );
         const secondInput = $("#inputWrapperSecond input");
         const secondInpValue = +secondInput.val();
-        const secondInpName = secondInput.attr("name");
 
-        //first input content update
-        updateInput(
-          secondInput,
-          exchange(secondInpName, firstInpName, secondInpValue, data),
-          firstInpName
+        setDropdownListHTML();
+        setInputHtml(
+          secondInpValue,
+          doExchange(secondInpValue, "from", fetchRates)
         );
-        firstWrapper.appendTo("#exchangeWrapperSecond");
-        firstWrapperDropdown.appendTo("#exchangeWrapperSecond");
-
-        //second input content update
-        updateInput(
-          firstInput,
-          exchange(firstInpName, secondInpName, firstInpValue, data),
-          secondInpName
-        );
-        secondWrapper.appendTo("#exchangeWrapperFirst");
-        secondWrapperDropdown.appendTo("#exchangeWrapperFirst");
       });
 
-      $(".currency-switch .currency-item").on("click", function () {
+      $(document).on("click", ".currency-switch .currency-item", function () {
         const parent = $(this).parent();
-        const previousSibling = parent.prev();
-        const inputWrapper = parent.prev().prev();
+        const itemType = $(this).data("type");
+        const itemName = $(this).data("name");
 
-        const name = $(this).data("name");
-        const image = $(this).data("image");
+        if (itemType === "from") {
+          currencyList.selectedFrom = itemName;
+        } else {
+          currencyList.selectedTo = itemName;
+        }
 
-        let dropdowns = $(".currency-switch");
-        dropdowns = dropdowns.not(parent);
-        dropdowns.find(`.currency-item.desibled`).removeClass("desibled");
-        dropdowns
-          .find(`.currency-item[data-name=${name}]`)
-          .addClass("desibled");
-
-        $(previousSibling).find(".currency-image").attr("src", image);
-        $(previousSibling).find(".currency-name").text(name);
-        $(inputWrapper).find("input").attr("name", name);
-
-        const leftInput = $("#inputWrapperFirst").find("input");
-        const leftInputName = leftInput.attr("name");
-        const rightInput = $("#inputWrapperSecond").find("input");
-        const rightInputName = rightInput.attr("name");
-
-        leftInput.val(1000);
-        rightInput.val(
-          exchange(leftInputName, rightInputName, 1000, data, "send")
-        );
-
-        parent.find(".currency-item.active").removeClass("active");
-        $(this).addClass("active");
+        setDropdownListHTML();
+        setInputHtml(1000, doExchange(1000, "from", fetchRates));
         parent.removeClass("show");
       });
 
@@ -316,7 +473,14 @@ $(() => {
         $(".canvas-range .dark .dark-overlay").css("transform", transformValue);
 
         $("#moneyFrom").text(addCommas(value));
-        $("#moneyTo").text(addCommas(exchange("rub", "usdt", value, data)));
+        $("#moneyTo").text(
+          addCommas(
+            roundToTwoDecimals(
+              currencyList.list.rub.to.usdt(value, "from", fetchRates),
+              2
+            )
+          )
+        );
       });
     })
     .catch((error) => {
