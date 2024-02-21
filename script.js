@@ -387,19 +387,11 @@ $(() => {
   };
 
   function roundToTwoDecimals(inputNumber) {
-    // if (Math.abs(inputNumber) < 0.009) {
-    //   // var strNumber = inputNumber.toString();
-
-    //   // for (var i = 2; i < strNumber.length; i++) {
-    //   //   if (strNumber[i] !== "0") {
-    //   //     break;
-    //   //   }
-    //   // }
-
-    //   return inputNumber;
-    // } else {
-    return inputNumber.toFixed(8);
-    // }
+    const digitsNumber =
+      currencyList.selectedTo === "btc" || currencyList.selectedTo === "eth"
+        ? 8
+        : 2;
+    return inputNumber.toFixed(digitsNumber);
   }
 
   $(".currency-wrapper").on("click", (e) => {
