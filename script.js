@@ -382,7 +382,7 @@ $(() => {
     const to = currencyList.selectedTo;
 
     const decimalDigitsFrom = to === "btc" || to === "eth" ? 8 : 2;
-    const decimalDigitsTo = from === "btc" || to === "eth" ? 8 : 2;
+    const decimalDigitsTo = from === "btc" || from === "eth" ? 8 : 2;
 
     return type === "from"
       ? roundToTwoDecimals(
