@@ -50,7 +50,7 @@ $(() => {
   //   Currency rate
   const getExchangeRate = (from, to, rate, type) => {
     if (type === "to") {
-      return rate[`${to}_${from}`];
+      return 1 / rate[`${to}_${from}`];
     }
     return rate[`${from}_${to}`];
   };
@@ -70,7 +70,7 @@ $(() => {
         name: "usd",
         title: "USD",
         longTitle: "US Dollar",
-        notExchange: ["usd", "btc", "eth"],
+        notExchange: ["usd"],
         to: {
           rub: (value, type, rate) =>
             value * getExchangeRate("usdt", "rub", rate, type),
@@ -94,6 +94,10 @@ $(() => {
             value * getExchangeRate("usdt", "kzt", rate, type),
           byn: (value, type, rate) =>
             value * getExchangeRate("usdt", "byn", rate, type),
+          btc: (value, type, rate) =>
+            value * getExchangeRate("usdt", "btc", rate, type),
+          eth: (value, type, rate) =>
+            value * getExchangeRate("usdt", "eth", rate, type),
         },
       },
       rub: {
@@ -101,16 +105,22 @@ $(() => {
         name: "rub",
         title: "RUB",
         longTitle: "Russian Ruble",
-        notExchange: ["rub", "uah", "kzt", "byn"],
+        notExchange: ["rub"],
         to: {
           usd: (value, type, rate) =>
-            value / getExchangeRate("rub", "usdt", rate, type),
+            value * getExchangeRate("rub", "usdt", rate, type),
           usdt: (value, type, rate) =>
-            value / getExchangeRate("rub", "usdt", rate, type),
+            value * getExchangeRate("rub", "usdt", rate, type),
           btc: (value, type, rate) =>
-            value / getExchangeRate("rub", "btc", rate, type),
+            value * getExchangeRate("rub", "btc", rate, type),
           eth: (value, type, rate) =>
-            value / getExchangeRate("rub", "eth", rate, type),
+            value * getExchangeRate("rub", "eth", rate, type),
+          uah: (value, type, rate) =>
+            value * getExchangeRate("rub", "uah", rate, type),
+          kzt: (value, type, rate) =>
+            value * getExchangeRate("rub", "kzt", rate, type),
+          byn: (value, type, rate) =>
+            value * getExchangeRate("rub", "byn", rate, type),
         },
       },
       usdt: {
@@ -118,7 +128,7 @@ $(() => {
         name: "usdt",
         title: "USDT",
         longTitle: "Tether",
-        notExchange: ["usdt", "btc", "eth"],
+        notExchange: ["usdt"],
         to: {
           rub: (value, type, rate) =>
             value * getExchangeRate("usdt", "rub", rate, type),
@@ -142,6 +152,10 @@ $(() => {
             value * getExchangeRate("usdt", "kzt", rate, type),
           byn: (value, type, rate) =>
             value * getExchangeRate("usdt", "byn", rate, type),
+          btc: (value, type, rate) =>
+            value * getExchangeRate("usdt", "btc", rate, type),
+          eth: (value, type, rate) =>
+            value * getExchangeRate("usdt", "eth", rate, type),
         },
       },
       btc: {
@@ -149,7 +163,7 @@ $(() => {
         name: "btc",
         title: "BTC",
         longTitle: "Bitcoin",
-        notExchange: ["btc", "usd", "usdt", "eth"],
+        notExchange: ["btc"],
         to: {
           rub: (value, type, rate) =>
             value * getExchangeRate("btc", "rub", rate, type),
@@ -159,6 +173,12 @@ $(() => {
             value * getExchangeRate("btc", "kzt", rate, type),
           byn: (value, type, rate) =>
             value * getExchangeRate("btc", "byn", rate, type),
+          usd: (value, type, rate) =>
+            value * getExchangeRate("btc", "usdt", rate, type),
+          usdt: (value, type, rate) =>
+            value * getExchangeRate("btc", "usdt", rate, type),
+          eth: (value, type, rate) =>
+            value * getExchangeRate("btc", "eth", rate, type),
         },
       },
       eth: {
@@ -166,7 +186,7 @@ $(() => {
         name: "eth",
         title: "ETH",
         longTitle: "Ethereum",
-        notExchange: ["btc", "usd", "usdt", "eth"],
+        notExchange: ["eth"],
         to: {
           rub: (value, type, rate) =>
             value * getExchangeRate("eth", "rub", rate, type),
@@ -176,6 +196,12 @@ $(() => {
             value * getExchangeRate("eth", "kzt", rate, type),
           byn: (value, type, rate) =>
             value * getExchangeRate("eth", "byn", rate, type),
+          btc: (value, type, rate) =>
+            value * getExchangeRate("eth", "btc", rate, type),
+          usd: (value, type, rate) =>
+            value * getExchangeRate("eth", "usdt", rate, type),
+          usdt: (value, type, rate) =>
+            value * getExchangeRate("eth", "usdt", rate, type),
         },
       },
       uah: {
@@ -183,16 +209,22 @@ $(() => {
         name: "uah",
         title: "UAH",
         longTitle: "Ukrainian Hryvnia",
-        notExchange: ["rub", "uah", "kzt", "byn"],
+        notExchange: ["uah"],
         to: {
           usd: (value, type, rate) =>
-            value / getExchangeRate("uah", "usdt", rate, type),
+            value * getExchangeRate("uah", "usdt", rate, type),
           usdt: (value, type, rate) =>
-            value / getExchangeRate("uah", "usdt", rate, type),
+            value * getExchangeRate("uah", "usdt", rate, type),
           btc: (value, type, rate) =>
-            value / getExchangeRate("uah", "btc", rate, type),
+            value * getExchangeRate("uah", "btc", rate, type),
           eth: (value, type, rate) =>
-            value / getExchangeRate("uah", "eth", rate, type),
+            value * getExchangeRate("uah", "eth", rate, type),
+          rub: (value, type, rate) =>
+            value * getExchangeRate("uah", "rub", rate, type),
+          kzt: (value, type, rate) =>
+            value * getExchangeRate("uah", "kzt", rate, type),
+          byn: (value, type, rate) =>
+            value * getExchangeRate("uah", "byn", rate, type),
         },
       },
       kzt: {
@@ -200,16 +232,22 @@ $(() => {
         name: "kzt",
         title: "KZT",
         longTitle: "Kazakhstani Tenge",
-        notExchange: ["rub", "uah", "kzt", "byn"],
+        notExchange: ["kzt"],
         to: {
           usd: (value, type, rate) =>
-            value / getExchangeRate("kzt", "usdt", rate, type),
+            value * getExchangeRate("kzt", "usdt", rate, type),
           usdt: (value, type, rate) =>
-            value / getExchangeRate("kzt", "usdt", rate, type),
+            value * getExchangeRate("kzt", "usdt", rate, type),
           btc: (value, type, rate) =>
-            value / getExchangeRate("kzt", "btc", rate, type),
+            value * getExchangeRate("kzt", "btc", rate, type),
           eth: (value, type, rate) =>
-            value / getExchangeRate("kzt", "eth", rate, type),
+            value * getExchangeRate("kzt", "eth", rate, type),
+          rub: (value, type, rate) =>
+            value * getExchangeRate("kzt", "rub", rate, type),
+          uah: (value, type, rate) =>
+            value * getExchangeRate("kzt", "uah", rate, type),
+          byn: (value, type, rate) =>
+            value * getExchangeRate("kzt", "byn", rate, type),
         },
       },
       byn: {
@@ -217,16 +255,22 @@ $(() => {
         name: "byn",
         title: "BYN",
         longTitle: "Belarusian Ruble",
-        notExchange: ["rub", "uah", "kzt", "byn"],
+        notExchange: ["byn"],
         to: {
           usd: (value, type, rate) =>
-            value / getExchangeRate("byn", "usdt", rate, type),
+            value * getExchangeRate("byn", "usdt", rate, type),
           usdt: (value, type, rate) =>
-            value / getExchangeRate("byn", "usdt", rate, type),
+            value * getExchangeRate("byn", "usdt", rate, type),
           btc: (value, type, rate) =>
-            value / getExchangeRate("byn", "btc", rate, type),
+            value * getExchangeRate("byn", "btc", rate, type),
           eth: (value, type, rate) =>
-            value / getExchangeRate("byn", "eth", rate, type),
+            value * getExchangeRate("byn", "eth", rate, type),
+          rub: (value, type, rate) =>
+            value * getExchangeRate("byn", "rub", rate, type),
+          uah: (value, type, rate) =>
+            value * getExchangeRate("byn", "uah", rate, type),
+          kzt: (value, type, rate) =>
+            value * getExchangeRate("byn", "kzt", rate, type),
         },
       },
     },
