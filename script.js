@@ -387,24 +387,17 @@ $(() => {
   };
 
   function roundToTwoDecimals(inputNumber) {
-    console.log(inputNumber);
-    // Check if inputNumber is very close to zero
     if (Math.abs(inputNumber) < 0.009) {
-      // Convert to string to inspect significant digits
       // var strNumber = inputNumber.toString();
 
-      // // Iterate through digits after the decimal point
       // for (var i = 2; i < strNumber.length; i++) {
-      //   // If we encounter a non-zero digit, break the loop
       //   if (strNumber[i] !== "0") {
       //     break;
       //   }
       // }
 
-      // Return the original number with additional significant digits
       return inputNumber;
     } else {
-      // For non-zero numbers, round to two decimal places
       return inputNumber.toFixed(2);
     }
   }
