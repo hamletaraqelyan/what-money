@@ -387,19 +387,19 @@ $(() => {
   };
 
   function roundToTwoDecimals(inputNumber) {
-    if (Math.abs(inputNumber) < 0.009) {
-      // var strNumber = inputNumber.toString();
+    // if (Math.abs(inputNumber) < 0.009) {
+    //   // var strNumber = inputNumber.toString();
 
-      // for (var i = 2; i < strNumber.length; i++) {
-      //   if (strNumber[i] !== "0") {
-      //     break;
-      //   }
-      // }
+    //   // for (var i = 2; i < strNumber.length; i++) {
+    //   //   if (strNumber[i] !== "0") {
+    //   //     break;
+    //   //   }
+    //   // }
 
-      return inputNumber;
-    } else {
-      return inputNumber.toFixed(2);
-    }
+    //   return inputNumber;
+    // } else {
+    return inputNumber.toFixed(8);
+    // }
   }
 
   $(".currency-wrapper").on("click", (e) => {
