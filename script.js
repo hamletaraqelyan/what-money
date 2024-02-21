@@ -387,12 +387,26 @@ $(() => {
   };
 
   function roundToTwoDecimals(inputNumber) {
-    if (inputNumber === 0) {
-      return 0;
-    }
+    console.log(inputNumber);
+    // Check if inputNumber is very close to zero
+    if (Math.abs(inputNumber) < 0.009) {
+      // Convert to string to inspect significant digits
+      // var strNumber = inputNumber.toString();
 
-    const roundedNumber = inputNumber.toFixed(2);
-    return roundedNumber;
+      // // Iterate through digits after the decimal point
+      // for (var i = 2; i < strNumber.length; i++) {
+      //   // If we encounter a non-zero digit, break the loop
+      //   if (strNumber[i] !== "0") {
+      //     break;
+      //   }
+      // }
+
+      // Return the original number with additional significant digits
+      return inputNumber;
+    } else {
+      // For non-zero numbers, round to two decimal places
+      return inputNumber.toFixed(2);
+    }
   }
 
   $(".currency-wrapper").on("click", (e) => {
