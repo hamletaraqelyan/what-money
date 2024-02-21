@@ -381,16 +381,21 @@ $(() => {
     const from = currencyList.selectedFrom;
     const to = currencyList.selectedTo;
 
+    const decimalDigitsFrom = to === "btc" || to === "eth" ? 8 : 2;
+    const decimalDigitsTo = from === "btc" || to === "eth" ? 8 : 2;
+
     return type === "from"
-      ? roundToTwoDecimals(currencyList.list[from].to[to](value, type, rates))
-      : roundToTwoDecimals(currencyList.list[to].to[from](value, type, rates));
+      ? roundToTwoDecimals(
+          currencyList.list[from].to[to](value, type, rates),
+          decimalDigitsFrom
+        )
+      : roundToTwoDecimals(
+          currencyList.list[to].to[from](value, type, rates),
+          decimalDigitsTo
+        );
   };
 
-  function roundToTwoDecimals(inputNumber) {
-    const digitsNumber =
-      currencyList.selectedTo === "btc" || currencyList.selectedTo === "eth"
-        ? 8
-        : 2;
+  function roundToTwoDecimals(inputNumber, digitsNumber = 2) {
     return inputNumber.toFixed(digitsNumber);
   }
 
