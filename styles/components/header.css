@@ -99,7 +99,7 @@ header .lang-selector:hover .list {
     margin-bottom: var(--spacing-10);
   }
 
-  header .lang-selector + .button {
+  header .lang-selector ~ .button {
     display: none;
   }
 }
