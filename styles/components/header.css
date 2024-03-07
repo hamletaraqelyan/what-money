@@ -25,6 +25,10 @@ header .lang-selector {
   font-weight: 600;
 }
 
+header .button:first-of-type {
+  margin-right: var(--spacing-15);
+}
+
 header .lang-selector .selected {
   display: flex;
   align-items: center;

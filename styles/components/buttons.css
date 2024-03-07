@@ -27,6 +27,12 @@
   min-width: 6rem;
 }
 
+.button.blue {
+  background: var(--button-gradient-background);
+  color: var(--text-white);
+  border: none;
+}
+
 @media (max-width: 480px) {
   .button {
     padding: var(--spacing-12) var(--spacing-32);
